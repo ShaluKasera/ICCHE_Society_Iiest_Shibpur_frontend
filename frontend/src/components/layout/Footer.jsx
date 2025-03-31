@@ -85,7 +85,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/instagram">
+                  <Link to="http://instagram.com/icche.iiests/?hl=en">
                     <FaSquareInstagram className="size-7 text-pink-800" />
                   </Link>
                 </li>

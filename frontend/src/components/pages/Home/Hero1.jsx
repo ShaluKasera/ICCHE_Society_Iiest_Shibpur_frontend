@@ -9,7 +9,7 @@ const Hero = () => {
           <div className="col-10 col-sm-8 col-lg-6">
             <img
               src={image2}
-              className="d-block mx-lg-auto img-fluid"
+              className="d-block mx-lg-auto img-fluid rounded-3xl"
               alt="image loading"
               width="700"
               height="500"
@@ -18,13 +18,10 @@ const Hero = () => {
           </div>
           <div className="col-lg-6">
             <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-              Responsive left-aligned hero with image
+            Focus on Education and Extracurricular Activities
             </h1>
             <p className="lead">
-              Quickly design and customize responsive mobile-first sites with
-              Bootstrap, the world's most popular front-end open source toolkit,
-              featuring Sass variables and mixins, responsive grid system,
-              extensive prebuilt components, and powerful JavaScript plugins.
+            The primary goal of ICCHE is to offer quality education and a nurturing environment where children can grow academically and socially. In addition to teaching subjects like Math, Science, and English, ICCHE conducts workshops, creative sessions, and interactive activities to enhance learning. These extracurricular activities encourage creativity, problem-solving, and teamwork among students.
             </p>
           </div>
         </div>
