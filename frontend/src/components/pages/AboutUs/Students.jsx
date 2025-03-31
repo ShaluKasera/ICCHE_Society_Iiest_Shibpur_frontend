@@ -93,7 +93,10 @@ const Students = () => {
     <Layout>
       <div className="container mx-auto px-1 ">
         <ToastContainer position="top-right" autoClose={3000} />
-        <h2 className="text-center my-6 text-2xl font-bold">Our Students</h2>
+
+        <h1 className=" items-center    text-center my-10 text-2xl font-bold ">
+          Our Students
+        </h1>
 
         {loading && <p className="text-center text-lg">Loading students...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}

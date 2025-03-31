@@ -10,8 +10,6 @@ const Volunteers = () => {
   const [error, setError] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [showDetails, setShowDetails] = useState({});
-  const [selectedFilter, setSelectedFilter] = useState("");
-  const [filterValue, setFilterValue] = useState("");
 
   const toggleDetails = (id) => {
     setShowDetails((prev) => ({
@@ -93,138 +91,14 @@ const Volunteers = () => {
     }
   };
 
-  
-
-  
-
-  const handleFilterChange = (event) => {
-    setSelectedFilter(event.target.value);
-    setFilterValue(""); // Reset input when changing filter type
-  };
-
-  const handleValueChange = (event) => {
-    setFilterValue(event.target.value);
-  };
-
-  const handleSearch = () => {
-    if (filterValue) {
-      const filtered = volunteers.filter((volunteer) => {
-        if (selectedFilter === "year") {
-          return volunteer.year === parseInt(filterValue);
-        }
-        if (selectedFilter === "department") {
-          return volunteer.department.toLowerCase() === filterValue.toLowerCase();
-        }
-        if (selectedFilter === "name") {
-          return volunteer.fullName.toLowerCase().includes(filterValue.toLowerCase());
-        }
-        return true;
-      });
-      setFilteredVolunteers(filtered);
-    } else {
-      setFilteredVolunteers(volunteers); // Reset to full list
-    }
-  };
-
-
-
-
-
   return (
     <Layout>
-      <div className=" mx-auto px-1 ">
+      <div className="container mx-auto px-1 ">
         <ToastContainer position="top-right" autoClose={3000} />
 
-
-
-        <div className="flex w-full h-full flex-col md:flex-row">
-        <h1 className="flex-1  flex items-center justify-start ms-4   text-center my-6 text-2xl font-bold w-50%">Our Volunteers</h1>
-
-        <div className=" flex-1 flex items-center justify-center  gap-3  p-4 rounded-lg  bg-white">
-      <label htmlFor="filter" className="font-semibold">
-        Filter
-      </label>
-
-      <select
-        id="filter"
-        value={selectedFilter}
-        onChange={handleFilterChange}
-        className="border p-2 rounded"
-      >
-        <option value="">Select</option>
-        <option value="year">By Year</option>
-        <option value="department">By Department</option>
-        <option value="name">By Name</option>
-      </select>
-
-      {selectedFilter === "year" && (
-              <select
-                id="yearFilter"
-                value={filterValue}
-                onChange={handleValueChange}
-          className="border p-2 rounded"
-        >
-          <option value="">Select Year</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      )}
-
-      {selectedFilter === "department" && (
-        <select
-          id="departmentFilter"
-          value={filterValue}
-          onChange={handleValueChange}
-          className="border p-2 rounded"
-        >
-          <option value="">Select Department</option>
-          <option value="cst">CST</option>
-          <option value="it">IT</option>
-          <option value="civil">Civil</option>
-          <option value="mining">Mining</option>
-          <option value="mining">Matallergy</option>
-          <option value="mining">Aerospace</option>
-          <option value="mining">EE</option>
-          <option value="mining">ETC</option>
-          <option value="mining">Architecture</option>
-          <option value="mining">Mechanical</option>
-        </select>
-      )}
-
-      {selectedFilter === "name" && (
-        <input
-          type="text"
-          id="nameFilter"
-          value={filterValue}
-          onChange={handleValueChange}
-          className="border p-2 rounded"
-          placeholder="Enter Name"
-        />
-      )}
-
-      {filterValue && (
-        <button
-          onClick={handleSearch}
-          className="link px-3 py-1 border-2 rounded"
-        >
-          Search
-        </button>
-      )}
-    </div>
-
-
-
-
-
-
-        </div>
-        
-
-
-        
+        <h1 className=" items-center    text-center my-10 text-2xl font-bold ">
+          Our Volunteers
+        </h1>
 
         {loading && (
           <p className="text-center text-lg">Loading volunteers...</p>
@@ -284,10 +158,10 @@ const Volunteers = () => {
                       {volunteer.fullName}
                     </h3>
                     <div className="text-start mt-2 text-gray-600 text-sm">
-                      <p className="break-words overflow-auto whitespace-normal" >
+                      <p className="break-words overflow-auto whitespace-normal">
                         <strong>Email:</strong> {volunteer.email}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal" >
+                      <p className="break-words overflow-auto whitespace-normal">
                         {" "}
                         <strong>Contact:</strong>
                         {volunteer.contactNumber}
@@ -295,33 +169,33 @@ const Volunteers = () => {
                       <p>
                         <strong>Enrollment No:</strong> {volunteer.enrollmentNo}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal" >
+                      <p className="break-words overflow-auto whitespace-normal">
                         {" "}
                         <strong>Gender:</strong>
                         {volunteer.gender}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal" >
+                      <p className="break-words overflow-auto whitespace-normal">
                         <strong>Year: </strong>
                         {volunteer.year}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal" >
+                      <p className="break-words overflow-auto whitespace-normal">
                         <strong>Department:</strong> {volunteer.department}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal" >
+                      <p className="break-words overflow-auto whitespace-normal">
                         <strong>Residence:</strong> {volunteer.residenceType}
                       </p>
                       {volunteer.residenceType === "Hostel" && (
-                        <p className="break-words overflow-auto whitespace-normal" >
+                        <p className="break-words overflow-auto whitespace-normal">
                           <strong>Hostel: </strong> {volunteer.hostelName}
                         </p>
                       )}
                       {volunteer.residenceType === "Hall" && (
-                        <p className="break-words overflow-auto whitespace-normal" >
+                        <p className="break-words overflow-auto whitespace-normal">
                           <strong>Hall: </strong> {volunteer.hallName}
                         </p>
                       )}
                       {volunteer.residenceType === "Day Scholar" && (
-                         <p className="break-words overflow-auto whitespace-normal" >
+                        <p className="break-words overflow-auto whitespace-normal">
                           <strong>Address: </strong> {volunteer.address}
                         </p>
                       )}

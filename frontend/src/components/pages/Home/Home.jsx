@@ -58,22 +58,24 @@ const Home = () => {
 
           {/* Location Section */}
           <div className="flex items-center justify-center space-x-2 text-gray-300 text-lg md:text-xl">
-            <FaMapMarkerAlt className="text-red-400" />
-            <p>Slatter Hall, IIEST, Shibpur, Howrah, West Bengal</p>
+            <FaMapMarkerAlt className="text-red-400 size-" />
+            <p className="mt-2">
+              Slatter Hall, IIEST, Shibpur, Howrah, West Bengal
+            </p>
           </div>
 
           {!loading && (
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mt-4">
-              A non-profit society at IIEST Shibpur dedicated to empowering underprivileged students.
+              A non-profit society at IIEST Shibpur dedicated to empowering
+              underprivileged students.
             </p>
           )}
         </div>
       </div>
-<hr/>
-    
-      <Hero/><hr/>
-      <Hero2/><hr/>
-      <Hero3/>
+
+      <Hero />
+      <Hero2 />
+      <Hero3 />
     </Layout>
   );
 };

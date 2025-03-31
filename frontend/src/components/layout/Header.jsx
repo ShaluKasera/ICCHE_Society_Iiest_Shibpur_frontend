@@ -10,7 +10,7 @@ const Header = () => {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [eventsDropdownOpen, setEventsDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [notifications, setNotifications] = useState(2);
   const timeoutRef = useRef(null);
 
