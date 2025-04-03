@@ -4,6 +4,7 @@ import axios from "axios";
 
 const Gallery = () => {
   const [galleryItems, setGalleryItems] = useState([]);
+  const [selectedMedia, setSelectedMedia] = useState(null); // State for modal
 
   useEffect(() => {
     const fetchGallery = async () => {
@@ -26,87 +27,104 @@ const Gallery = () => {
 
   return (
     <Layout>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "20px", textAlign: "center" }}>
-        <h2 style={{ fontSize: "2.5rem", marginBottom: "30px", color: "#333" }}>Gallery</h2>
+      <div style={{ maxWidth: "1450px", margin: "0 auto", padding: "10px" }}>
+        <h2 style={{ fontSize: "3.5rem", marginBottom: "10px", textAlign: "center", color: "#333" }}>
+          Gallery
+        </h2>
 
         {galleryItems.length > 0 ? (
-          <div style={{ 
-            display: "grid", 
-            gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", // Responsive grid
-            gap: "25px",
-            justifyContent: "center",
-          }}>
-            {galleryItems.map((item) => (
-              <div
-                key={item._id}
-                style={{
-                  background: "#ffffff",
-                  borderRadius: "12px",
-                  boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15)",
-                  textAlign: "left",
-                  overflow: "hidden",
-                  transition: "transform 0.3s ease",
-                  padding: "20px",
-                }}
-              >
-                <h3 style={{ fontSize: "1.6rem", marginBottom: "15px", color: "#007bff", textAlign: "center" }}>
-                  {item.title}
-                </h3>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "6px",
+            }}
+          >
+            {galleryItems.map((item) => {
+              const thumbnail = item.photos?.[0] || item.videos?.[0];
 
-                {/* 📸 Photos Section */}
-                {item.photos && item.photos.length > 0 && (
-                  <div style={{ marginTop: "15px" }}>
-                    <h4 style={{ fontSize: "1.2rem", marginBottom: "10px", color: "#333", textAlign: "center" }}>
-                      Photos
-                    </h4>
-                    <div style={{ 
-                      display: "grid", 
-                      gridTemplateColumns: "repeat(2, 1fr)", // 👈 **2 Photos Per Row**
-                      gap: "15px",
-                      justifyContent: "center",
-                    }}>
-                      {item.photos.map((photo, index) => (
-                        <img
-                          key={index}
-                          src={photo}
-                          alt="Gallery Image"
-                          style={{ 
-                            width: "100%", 
-                            height: "250px",
-                            objectFit: "cover", 
-                            borderRadius: "10px" 
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
+              return (
+                <div key={item._id} style={{ textAlign: "center" }}>
+                  {thumbnail ? (
+                    thumbnail.includes(".mp4") ? (
+                      <video
+                        src={thumbnail}
+                        controls
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          borderRadius: "10px",
+                          objectFit: "cover",
+                        }}
+                        onClick={() => setSelectedMedia(thumbnail)}
+                      />
+                    ) : (
+                      <img
+                        src={thumbnail}
+                        alt={item.title}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          borderRadius: "5px",
+                          objectFit: "cover",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => setSelectedMedia(thumbnail)}
+                      />
+                    )
+                  ) : null}
 
-                {/* 🎥 Videos Section */}
-                {item.videos && item.videos.length > 0 && (
-                  <div style={{ marginTop: "25px" }}>
-                    <h4 style={{ fontSize: "1.2rem", marginBottom: "10px", color: "#333", textAlign: "center" }}>
-                      Videos
-                    </h4>
-                    <div>
-                      {item.videos.map((video, index) => (
-                        <video
-                          key={index}
-                          controls
-                          style={{ width: "100%", borderRadius: "10px", height: "250px" }}
-                        >
-                          <source src={video} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  <h3 style={{ fontSize: "1.2rem", marginTop: "10px", color: "#333" }}>{item.title}</h3>
+                </div>
+              );
+            })}
           </div>
         ) : (
-          <p style={{ fontSize: "1.2rem", color: "#666" }}>Loading gallery...</p>
+          <p style={{ fontSize: "1.2rem", color: "#666", textAlign: "center" }}>Loading gallery...</p>
+        )}
+
+        {/* Modal for Fullscreen Image/Video */}
+        {selectedMedia && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              background: "rgba(0, 0, 0, 0.8)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 1000,
+            }}
+            onClick={() => setSelectedMedia(null)} // Close modal when clicking outside
+          >
+            <div style={{ position: "relative", maxWidth: "90%", maxHeight: "90%" }}>
+              <button
+                onClick={() => setSelectedMedia(null)}
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  background: "#fff",
+                  border: "none",
+                  padding: "8px",
+                  fontSize: "1.5rem",
+                  cursor: "pointer",
+                  borderRadius: "10%",
+                }}
+              >
+                ✖
+              </button>
+
+              {selectedMedia.includes(".mp4") ? (
+                <video src={selectedMedia} controls style={{ width: "100%", maxHeight: "90vh", borderRadius: "10px" }} />
+              ) : (
+                <img src={selectedMedia} alt="Full view" style={{ width: "100%", maxHeight: "90vh", borderRadius: "10px" }} />
+              )}
+            </div>
+          </div>
         )}
       </div>
     </Layout>

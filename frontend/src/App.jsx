@@ -34,6 +34,7 @@ import AddHomePageImage from './components/pages/Admin/AdminPanel/AddHomePageIma
 import Feedback from './components/pages/Admin//AdminPanel/Feedback';
 import AddNotification from './components/pages/Admin/AdminPanel/AddNotification';
 import Notification from './components/pages/Admin/Notification';
+import AddGallery from './components/pages/Admin/AdminPanel/AddGallery';
 function App() {
   return(
     <BrowserRouter>
@@ -69,6 +70,7 @@ function App() {
       <Route path='/admin/dashboard/feedback' element={<Feedback/>}/>
       <Route path='/admin/dashboard/add-notification' element={<AddNotification/>}/>
       <Route path='/home/notification' element={<Notification/>}/>
+      <Route path='/admin/dashboard/add-gallery' element={<AddGallery/>}/>
       <Route path='*' element={<Error/>}/>
 
 

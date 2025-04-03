@@ -239,6 +239,19 @@ const Dashboard = () => {
               label="Add Notification"
               isOpen={isSidebarOpen}
             />
+            <SidebarItem
+              to="/admin/dashboard/add-gallery"
+              icon={
+                <ImagePlus
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Gallery"
+              isOpen={isSidebarOpen}
+            />
+
 
             {/* Pending Approval Section */}
             <div className="mt-6 border-t border-gray-700 pt-4">
