@@ -1,8 +1,13 @@
 import React from "react";
 import Layout from "../../layout/Layout";
 import img1 from "../../../assets/slater.jpeg";
-import img2 from "../../../assets/img2.jpeg";
-import img3 from "../../../assets/img3.jpeg";
+import img2 from "../../../assets/img14.jpeg";
+import img3 from "../../../assets/img8.jpeg";
+import img4 from "../../../assets/img10.jpeg";
+import img5 from "../../../assets/img9.jpeg";
+import img6 from "../../../assets/img12.jpeg";
+import img7 from "../../../assets/img11.jpeg";
+import img8 from "../../../assets/img13.jpeg";
 
 const About = () => {
   return (
@@ -81,7 +86,7 @@ const About = () => {
               </div>
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
-                  src={img2}
+                  src={img3}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
                   alt="image loading"
                   width="700"
@@ -98,7 +103,7 @@ const About = () => {
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
-                  src={img2}
+                  src={img4}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
                   alt="image loading"
                   width="700"
@@ -145,7 +150,7 @@ const About = () => {
               </div>
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
-                  src={img2}
+                  src={img5}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
                   alt="image loading"
                   width="700"
@@ -162,7 +167,7 @@ const About = () => {
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
-                  src={img2}
+                  src={img6}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
                   alt="image loading"
                   width="700"
@@ -214,7 +219,7 @@ const About = () => {
               </div>
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
-                  src={img2}
+                  src={img7}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
                   alt="image loading"
                   width="700"
@@ -233,7 +238,7 @@ const About = () => {
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
-                  src={img3}
+                  src={img8}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
                   alt="image loading"
                   width="700"
