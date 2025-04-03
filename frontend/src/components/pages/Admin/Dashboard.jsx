@@ -333,13 +333,13 @@ const Dashboard = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={handleSendReport}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+                    className="bg-gray-500 rounded text-white px-2 py-0  shadow  !text-[12px] sm:!text-lg md:!text-xl md:w-52 md:h-12 hover:bg-gray-700 transition"
                   >
                     Send {reportType === "pdf" ? "PDF" : "Email"} Report
                   </button>
                   <button
                     onClick={() => setShowEmailInput(false)}
-                    className="bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition"
+                    className="bg-red-500 rounded text-white px-2 py-0  shadow  !text-[12px] sm:!text-lg md:!text-xl md:w-30 md:h-12 hover:bg-red-700 transition"
                   >
                     Cancel
                   </button>

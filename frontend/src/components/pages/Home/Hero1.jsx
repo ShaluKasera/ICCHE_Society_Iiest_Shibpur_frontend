@@ -1,6 +1,6 @@
 import React from "react";
-import image2 from "../../../assets/3907.jpg"
 
+import img2 from "../../../assets/img7.jpeg"
 const Hero = () => {
   return (
     <div>
@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div className="col-10 col-sm-8 col-lg-6">
             <img
-              src={image2}
+              src={img2}
               className="d-block mx-lg-auto img-fluid rounded-3xl"
               alt="image loading"
               width="700"

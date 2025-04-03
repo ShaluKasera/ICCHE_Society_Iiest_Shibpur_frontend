@@ -9,7 +9,7 @@ const About = () => {
     <Layout>
       <div>
         <div className="relative w-full">
-          <img src={img1} className="opacity-40 w-full" alt="image" />
+          <img src={img1} className="opacity-40 h-3/6 w-full" alt="image" />
           <div className="absolute inset-0 bg-black/50 text-white flex items-center justify-center">
             <div className="w-[90%] max-w-4xl text-center">
               <p className="text-md sm:text-xl md:text-2xl lg:text-5xl font-extrabold leading-tight">
