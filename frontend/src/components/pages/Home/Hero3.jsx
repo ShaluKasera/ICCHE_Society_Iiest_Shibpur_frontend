@@ -4,12 +4,13 @@ import image from "../../../assets/img5.jpeg";
 const Hero3 = () => {
   return (
     <div>
-      <div className="container col-xxl-8 px-4 py-5">
+
+      <div className="container  px-4 py-5">
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div className="col-10 col-sm-8 col-lg-6">
             <img
               src={image}
-              className="d-block mx-lg-auto img-fluid rounded-3xl"
+              className="d-block mx-lg-auto img-fluid  rounded-3xl"
               alt="image loading"
               width="700"
               height="500"

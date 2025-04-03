@@ -12,7 +12,7 @@ import img8 from "../../../assets/img13.jpeg";
 const About = () => {
   return (
     <Layout>
-      <div>
+      <div >
         <div className="relative w-full">
           <img src={img1} className="opacity-40 h-3/6 w-full" alt="image" />
           <div className="absolute inset-0 bg-black/50 text-white flex items-center justify-center">
@@ -32,7 +32,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4 py-5">
+          <div className="container  px-4 py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
@@ -44,7 +44,7 @@ const About = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="col-lg-6">
+              <div className="col-lg-6 ">
                 <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3"></h1>
                 <p className="text-xs md:text-lg lg:text-xl">
                   ICCHE supports underprivileged children from 1st to 10th grade
@@ -64,7 +64,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4  py-5">
+          <div className="container  px-4  py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5 ">
               <div className="col-lg-6">
                 <h1 className="display-5  fw-bold text-body-emphasis lh-1 mb-3">
@@ -99,7 +99,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4 py-5">
+          <div className="container  px-4 py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
@@ -133,7 +133,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4  py-5">
+          <div className="container  px-4  py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5 ">
               <div className="col-lg-6">
                 <h1 className="display-5  fw-bold text-body-emphasis lh-1 mb-3">
@@ -163,7 +163,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4 py-5">
+          <div className="container  px-4 py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
@@ -196,7 +196,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4  py-5">
+          <div className="container  px-4  py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5 ">
               <div className="col-lg-6">
                 <h1 className="display-5  fw-bold text-body-emphasis lh-1 mb-3">
@@ -234,9 +234,9 @@ const About = () => {
 
 
         <div className="ms-3 lg:ms-5">
-          <div className="container col-xxl-8 px-4 py-5">
+          <div className="container  px-4 py-5">
             <div className="row flex-lg-row-reverse align-items-center g-5">
-              <div className="col-10 col-sm-8 col-lg-6">
+            <div className="col-10 col-sm-8 col-lg-6">
                 <img
                   src={img8}
                   className="d-block mx-lg-auto img-fluid rounded-3xl"
