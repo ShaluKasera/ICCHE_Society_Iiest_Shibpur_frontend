@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiStudentFill } from "react-icons/pi";
+
 const Festival = () => {
   const [festivalEvents, setFestivalEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -88,10 +89,10 @@ const Festival = () => {
 
   return (
     <Layout>
-      <div className="container">
+      <div className="container overflow-auto">
         <ToastContainer position="top-right" autoClose={3000} />
        
-          <h1 className="text-2xl font-bold mb-4 text-center">
+          <h1 className=" mb-4 text-center">
             Festival Events
           </h1>
 
@@ -104,7 +105,7 @@ const Festival = () => {
             <p className="text-lg text-gray-500">No festival events found.</p>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-2">
             {festivalEvents.map((event) => (
               <div
                 key={event._id}

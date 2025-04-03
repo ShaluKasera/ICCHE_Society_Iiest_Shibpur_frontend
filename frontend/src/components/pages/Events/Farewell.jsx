@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast, ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { MdDateRange } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Farewell = () => {
   const [farewellEvents, setFarewellEvents] = useState([]);
@@ -83,6 +85,7 @@ const Farewell = () => {
 
   return (
     <Layout>
+      <div className="container overflow-auto ">
       <ToastContainer position="top-right" autoClose={3000} />
       <h1 className="text-2xl font-bold mb-4 text-center">Farewell Events</h1>
 
@@ -93,21 +96,26 @@ const Farewell = () => {
         <p className="text-center">No farewell events found.</p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-2">
         {farewellEvents.map((event) => (
-          <div key={event._id} className="border rounded-lg p-4 shadow-md bg-white relative">
+          <div key={event._id} className="border bg-gray-100 rounded-lg p-4 shadow-md relative">
             {/* Cover Image */}
             <img
               src={event.coverImageURL || "/uploads/default.png"}
               alt={event.title}
-              className="w-full h-48 object-cover rounded-lg"
+              className="w-full border h-48 object-cover rounded-lg"
             />
 
             {/* Event Details */}
-            <h2 className="text-xl font-semibold mt-2">{event.title}</h2>
+            <h1 className="text-xl text-center font-semibold mt-2">{event.title}</h1>
+            <div className="px-10">
+
+            
             <p className="text-gray-600">{event.description}</p>
-            <p><strong>Date:</strong> {new Date(event.date).toLocaleDateString()}</p>
-            <p><strong>Venue:</strong> {event.venue}</p>
+            <p className="flex gap-2  ">
+                               <MdDateRange className="font-extrabold  mt-0 text-red-600 text-2xl" />{new Date(event.date).toLocaleDateString()}</p>
+            <p className="flex gap-2  ">
+                               <FaLocationDot className="font-extrabold  mt-0 text-red-600 text-xl" />{event.venue}</p>
             <p><strong>Final Year Students Present:</strong> {event.finalYearStudentsPresent}</p>
             <p><strong>Juniors Present:</strong> {event.juniorPresent}</p>
 
@@ -127,6 +135,7 @@ const Farewell = () => {
                 </div>
               </div>
             )}
+            </div>
 
             {/* Videos Section */}
             {event.videos && event.videos.length > 0 && (
@@ -162,6 +171,7 @@ const Farewell = () => {
             )}
           </div>
         ))}
+      </div>
       </div>
     </Layout>
   );
