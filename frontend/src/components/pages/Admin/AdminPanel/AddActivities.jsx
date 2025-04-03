@@ -109,12 +109,7 @@ const AddActivities = () => {
 
   return (
     <Layout>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        transition={Slide}
-      />
-
+      <ToastContainer />
       <div className="w-[90%] max-w-xl mx-auto p-6  bg-white rounded-lg shadow-lg mt-7 text-xs sm:text-base mb-7 ">
         <h2 className="text-2xl text-center font-semibold text-gray-700 mb-6">
           Add Activity

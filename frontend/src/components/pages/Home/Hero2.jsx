@@ -1,5 +1,5 @@
 import React from "react";
-import image1 from "../../../assets/high-angle-group-smiley-childrens.jpg";
+import img1 from "../../../assets/img6.jpeg";
 const Hero2 = () => {
   return (
     <div>
@@ -16,7 +16,7 @@ const Hero2 = () => {
           </div>
           <div className="col-10 col-sm-8 col-lg-6">
             <img
-              src={image1}
+              src={img1}
               className="d-block mx-lg-auto img-fluid rounded-3xl"
               alt="image loading"
               width="700"
