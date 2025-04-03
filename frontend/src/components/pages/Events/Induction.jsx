@@ -112,7 +112,7 @@ const Induction = () => {
                 />
               )}
               <div className="p-4 text-left">
-                <h3 className="text-lg font-semibold text-blue-600">
+                <h3 className="text-lg text-center font-semibold text-blue-600">
                   {event.title}
                 </h3>
                 <p className="text-gray-600 text-sm">{event.description}</p>
