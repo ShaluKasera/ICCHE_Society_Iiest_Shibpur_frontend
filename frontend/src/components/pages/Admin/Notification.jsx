@@ -11,7 +11,7 @@ const Notification = () => {
     const fetchNotifications = async () => {
       try {
         const response = await axios.get("http://localhost:8000/api/notification");
-        console.log("API Response:", response.data);
+        console.log("API Response:", response.data); // Debug API Response
 
         if (Array.isArray(response.data)) {
           setNotifications(response.data);
@@ -42,19 +42,20 @@ const Notification = () => {
           <p className="text-center">No notifications available.</p>
         )}
 
-        {/* Display Notifications in a Single Column */}
+        {/* Display Notifications */}
         <div className="space-y-6">
           {notifications.map((notif, index) => (
             <div key={index} className="p-10 border rounded-lg shadow-md bg-gray-50 flex flex-col sm:flex-row gap-10 items-center">
               
-              {/* Image with Hover Effect & Fixed Size 1080x1080 */}
+              {/* Fixing Image Not Showing Issue */}
               {notif.imageFile && notif.imageFile !== "/uploads/default.png" && (
                 <div className="overflow-hidden rounded-lg">
                   <img 
-                    src={notif.imageFile} 
+                    src={Array.isArray(notif.imageFile) ? notif.imageFile[0] : notif.imageFile} 
                     alt="Notification" 
                     className="w-[500px] h-[500px] object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-110"
                   />
+                  <p className="text-xs text-gray-500 mt-2">{notif.imageFile}</p> {/* Debug URL */}
                 </div>
               )}
 
@@ -62,18 +63,6 @@ const Notification = () => {
               <div className="flex-1">
                 <h3 className="text-xl font-bold">{notif.title}</h3>
                 <p className="text-gray-600">{notif.description}</p>
-
-                {/* View PDF Link */}
-                {notif.pdfFile && notif.pdfFile.trim() !== "" && (
-                  <a 
-                    href={notif.pdfFile} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-blue-500 font-semibold block mt-2"
-                  >
-                    📄 View PDF
-                  </a>
-                )}
               </div>
             </div>
           ))}

@@ -8,7 +8,6 @@ const AddNotification = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState(null);
-  const [pdfFile, setPdfFile] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +18,6 @@ const AddNotification = () => {
     formData.append("title", title);
     formData.append("description", description);
     if (imageFile) formData.append("imageFile", imageFile);
-    if (pdfFile) formData.append("pdfFile", pdfFile);
 
     try {
       await axios.post(
@@ -46,7 +44,6 @@ const AddNotification = () => {
       setTitle("");
       setDescription("");
       setImageFile(null);
-      setPdfFile(null);
     } catch (error) {
       toast.update(loadingToast, {
         render: "Failed to add notification!",
@@ -63,8 +60,8 @@ const AddNotification = () => {
     <Layout>
       <ToastContainer position="top-right" autoClose={3000} transition={Slide} />
 
-      <div className="w-[80%] max-w-sm mx-auto p-6  bg-white rounded-lg shadow-lg mt-7 text-xs sm:text-base ">
-      <h2 className="text-2xl text-center font-semibold text-gray-700 mb-6">
+      <div className="w-[80%] max-w-sm mx-auto p-6 bg-white rounded-lg shadow-lg mt-7 text-xs sm:text-base">
+        <h2 className="text-2xl text-center font-semibold text-gray-700 mb-6">
           Add Notification
         </h2>
 
@@ -100,22 +97,13 @@ const AddNotification = () => {
             />
           </div>
 
-          <div>
-            <label className="form-label">PDF File:</label>
-            <input
-              type="file"
-              accept="application/pdf"
-              className="w-full border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-              onChange={(e) => setPdfFile(e.target.files[0])}
-            />
-          </div>
-          <div className='flex justify-center'>
-          <button
-            type="submit"
-            className=" border-2 border-gray-600 py-2 link  px-5 mt-2 mb-4 rounded"
-          >
-            Submit Notification
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="border-2 border-gray-600 py-2 link px-5 mt-2 mb-4 rounded"
+            >
+              Submit Notification
+            </button>
           </div>
         </form>
       </div>
