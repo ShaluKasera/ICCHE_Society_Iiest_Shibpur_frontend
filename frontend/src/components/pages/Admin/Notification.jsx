@@ -11,7 +11,7 @@ const Notification = () => {
     const fetchNotifications = async () => {
       try {
         const response = await axios.get("http://localhost:8000/api/notification");
-        console.log("API Response:", response.data); // Debug API Response
+        console.log("API Response:", response.data); 
 
         if (Array.isArray(response.data)) {
           setNotifications(response.data);
@@ -32,40 +32,41 @@ const Notification = () => {
 
   return (
     <Layout>
-      <div className="max-w-5xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg text-xs sm:text-base">
-        <h2 className="text-2xl font-semibold text-center mb-6">Notifications</h2>
+      <div className="max-w-7xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+        <h2 className="text-3xl font-bold text-center mb-10">Notifications & Wishes</h2>
 
-        {loading && <p className="text-center">Loading...</p>}
+        {loading && <p className="text-center text-gray-500">Loading...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
-
+        
         {!loading && notifications.length === 0 && !error && (
-          <p className="text-center">No notifications available.</p>
+          <p className="text-center text-gray-600">No notifications available.</p>
         )}
 
-        {/* Display Notifications */}
-        <div className="space-y-6">
-          {notifications.map((notif, index) => (
-            <div key={index} className="p-10 border rounded-lg shadow-md bg-gray-50 flex flex-col sm:flex-row gap-10 items-center">
-              
-              {/* Fixing Image Not Showing Issue */}
-              {notif.imageFile && notif.imageFile !== "/uploads/default.png" && (
-                <div className="overflow-hidden rounded-lg">
-                  <img 
-                    src={Array.isArray(notif.imageFile) ? notif.imageFile[0] : notif.imageFile} 
-                    alt="Notification" 
-                    className="w-[500px] h-[500px] object-cover rounded-lg transition-transform duration-300 ease-in-out hover:scale-110"
-                  />
-                  <p className="text-xs text-gray-500 mt-2">{notif.imageFile}</p> {/* Debug URL */}
-                </div>
-              )}
+        <div className="space-y-8">
+          {notifications.map((notif, index) => {
+            const imageUrl = Array.isArray(notif.imageFile) ? notif.imageFile[0] : notif.imageFile;
 
-              {/* Notification Content */}
-              <div className="flex-1">
-                <h3 className="text-xl font-bold">{notif.title}</h3>
-                <p className="text-gray-600">{notif.description}</p>
+            return (
+              <div key={index} className="flex flex-col md:flex-row items-center bg-gray-50 rounded-xl shadow-md overflow-hidden">
+                {/* Image Section */}
+                {imageUrl && imageUrl !== "/uploads/default.png" && (
+                  <div className="w-full md:w-1/2">
+                    <img 
+                      src={imageUrl} 
+                      alt="Notification" 
+                      className="w-full h-[350px] object-cover"
+                    />
+                  </div>
+                )}
+
+                {/* Text Section (Centered) */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center p-6">
+                  <h3 className="text-2xl font-semibold text-gray-900">{notif.title}</h3>
+                  <p className="text-gray-600 mt-2">{notif.description}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </Layout>
