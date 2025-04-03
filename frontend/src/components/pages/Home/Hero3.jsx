@@ -5,7 +5,7 @@ const Hero3 = () => {
   return (
     <div>
 
-      <div className="container  px-4 py-5">
+      <div className="container  px-4 py-0">
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div className="col-10 col-sm-8 col-lg-6">
             <img
@@ -21,7 +21,7 @@ const Hero3 = () => {
             <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">
               Role of Volunteers in ICCHE
             </h1>
-            <p className="lead">
+            <p className="font-medium text-xs sm:text-sm md:text-base lg:text-xl mt-4">
               The backbone of ICCHE is its dedicated volunteers, who are
               students from IIEST Shibpur. These volunteers take on the role of
               teachers, mentors, and guides, helping children with their studies

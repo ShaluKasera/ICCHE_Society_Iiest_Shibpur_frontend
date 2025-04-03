@@ -32,7 +32,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4 py-5">
+          <div className="container  px-4 py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
@@ -64,7 +64,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4  py-5">
+          <div className="container  px-4  py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5 ">
               <div className="col-lg-6">
                 <h1 className="display-5  fw-bold text-body-emphasis lh-1 mb-3">
@@ -99,7 +99,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4 py-5">
+          <div className="container  px-4 py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
@@ -133,7 +133,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4  py-5">
+          <div className="container  px-4  py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5 ">
               <div className="col-lg-6">
                 <h1 className="display-5  fw-bold text-body-emphasis lh-1 mb-3">
@@ -163,7 +163,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4 py-5">
+          <div className="container  px-4 py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5">
               <div className="col-10 col-sm-8 col-lg-6">
                 <img
@@ -196,7 +196,7 @@ const About = () => {
         </div>
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4  py-5">
+          <div className="container  px-4  py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5 ">
               <div className="col-lg-6">
                 <h1 className="display-5  fw-bold text-body-emphasis lh-1 mb-3">
@@ -234,7 +234,7 @@ const About = () => {
 
 
         <div className="ms-3 lg:ms-5">
-          <div className="container  px-4 py-5">
+          <div className="container  px-4 py-4">
             <div className="row flex-lg-row-reverse align-items-center g-5">
             <div className="col-10 col-sm-8 col-lg-6">
                 <img
