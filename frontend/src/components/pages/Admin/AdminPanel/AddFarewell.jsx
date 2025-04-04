@@ -76,8 +76,6 @@ const AddFarewell = () => {
         juniorPresent: "",
       });
       setCoverImageURL(null);
-      setPhotos([]);
-      setVideos([]);
     } catch (error) {
       console.error("Error:", error.response?.data || error.message);
       toast.update(loadingToast, {

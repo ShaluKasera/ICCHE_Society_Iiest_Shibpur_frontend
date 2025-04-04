@@ -8,10 +8,11 @@ const AddDonationDrive = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    venue: "",
+    location: "",
     date: "",
-    studentsPresent: "",
-    volunteersPresent: "",
+    studentsReceived: "",
+    volunteerPresent: "",
+    parentsReceived:"",
   });
 
   const [coverImageURL, setCoverImageURL] = useState(null);
@@ -31,7 +32,7 @@ const AddDonationDrive = () => {
   // Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loadingToast = toast.loading("Adding festival...");
+    const loadingToast = toast.loading("Adding cloth donation...");
 
     const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -48,7 +49,7 @@ const AddDonationDrive = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/admin/dashboard/cloth-donation/add-cloth-donation",
+        "http://localhost:8000/api/admin/dashboard/cloth-donations/add-cloth-donation",
         formDataToSend,
         {
           headers: {
@@ -71,9 +72,9 @@ const AddDonationDrive = () => {
         description: "",
         location: "",
         date: "",
-        volunteersPresent: "",
-        studentReceived:"",
-        parentReciedived:"",
+        volunteerPresent: "",
+        studentsReceived:"",
+        parentReceived:"",
       });
       setCoverImageURL(null);
     //   setPhotos([]);
@@ -144,27 +145,27 @@ const AddDonationDrive = () => {
 
           <input
             type="number"
-            name="volunteersPresent"
+            name="volunteerPresent"
             placeholder="Volunteers Present"
-            value={formData.volunteersPresent}
+            value={formData.volunteerPresent}
             onChange={handleChange}
             required
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
           />
  <input
             type="number"
-            name="studentReceived"
+            name="studentsReceived"
             placeholder="Student Received"
-            value={formData.studentReceived}
+            value={formData.studentsReceived}
             onChange={handleChange}
             required
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
           />
            <input
             type="number"
-            name="parentReceived"
+            name="parentsReceived"
             placeholder="Parent Received"
-            value={formData.parentReciedived}
+            value={formData.parentsReceived}
             onChange={handleChange}
             required
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"

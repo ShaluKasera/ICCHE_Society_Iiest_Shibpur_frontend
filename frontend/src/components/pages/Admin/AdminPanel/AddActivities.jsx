@@ -17,8 +17,6 @@ const AddActivities = () => {
   });
 
   const [coverImageURL, setCoverImageURL] = useState(null);
-  const [photos, setPhotos] = useState([]);
-  const [videos, setVideos] = useState([]);
 
   const activityTypes = [
     "Sports",
@@ -50,12 +48,6 @@ const AddActivities = () => {
     });
 
     if (coverImageURL) formDataToSend.append("coverImageURL", coverImageURL);
-    for (let i = 0; i < photos.length; i++) {
-      formDataToSend.append("photos", photos[i]);
-    }
-    for (let i = 0; i < videos.length; i++) {
-      formDataToSend.append("videos", videos[i]);
-    }
 
     console.log("Form Data Entries:");
     for (let pair of formDataToSend.entries()) {
@@ -93,8 +85,6 @@ const AddActivities = () => {
         volunteersPresent: "",
       });
       setCoverImageURL(null);
-      setPhotos([]);
-      setVideos([]);
     } catch (error) {
       console.error("Error:", error.response?.data || error.message);
       toast.update(loadingToast, {
