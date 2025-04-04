@@ -67,13 +67,27 @@ const Dashboard = () => {
       return;
     }
 
-    // Show loading toast
     const toastId = toast.loading("Sending report...");
 
-    const url =
-      reportType === "email"
-        ? "http://localhost:8000/api/admin/dashboard/reportemail"
-        : "http://localhost:8000/admin/dashboard/reportpdf";
+    let url = ""; // Correctly define URL
+    switch (reportType) {
+      case "student":
+        url = "http://localhost:8000/api/admin/dashboard/students/reportexcel";
+        break;
+      case "volunteer":
+        url =
+          "http://localhost:8000/api/admin/dashboard/volunteers/reportexcel";
+        break;
+      case "email":
+        url = "http://localhost:8000/api/admin/dashboard/reportemail";
+        break;
+      case "pdf":
+        url = "http://localhost:8000/api/admin/dashboard/reportpdf";
+        break;
+      default:
+        toast.error("Invalid report type");
+        return;
+    }
 
     try {
       await axios.post(
@@ -84,9 +98,8 @@ const Dashboard = () => {
         }
       );
 
-      // Update toast to success
       toast.update(toastId, {
-        render: "Report sent successfully!",
+        render: `Report sent successfully!`,
         type: "success",
         isLoading: false,
         autoClose: 3000,
@@ -97,7 +110,6 @@ const Dashboard = () => {
     } catch (error) {
       console.error(`Error sending ${reportType} report:`, error);
 
-      // Update toast to error
       toast.update(toastId, {
         render: `Failed to send ${reportType} report.`,
         type: "error",
@@ -389,7 +401,7 @@ const Dashboard = () => {
           </div>
 
           {/* Report Buttons */}
-          <div className="mt-6 flex flex-col items-center gap-4">
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
             {!showEmailInput ? (
               <div className="flex gap-4">
                 <button
@@ -397,9 +409,29 @@ const Dashboard = () => {
                     setReportType("email");
                     setShowEmailInput(true);
                   }}
-                  className="bg-gray-500 rounded text-white px-2 py-0  shadow  !text-[12px] sm:!text-lg md:!text-xl md:w-52 md:h-12 hover:bg-gray-700 transition"
+                  className="bg-gray-500 rounded text-white px-2 py-0 shadow text-sm md:text-lg md:w-52 md:h-12 hover:bg-gray-700 transition"
                 >
-                  Get Email Report
+                  Get Dashboard Report (Email)
+                </button>
+
+                <button
+                  onClick={() => {
+                    setReportType("student");
+                    setShowEmailInput(true);
+                  }}
+                  className="bg-gray-500 rounded text-white px-2 py-0 shadow text-sm md:text-lg md:w-52 md:h-12 hover:bg-gray-700 transition"
+                >
+                  Get Student Report
+                </button>
+
+                <button
+                  onClick={() => {
+                    setReportType("volunteer");
+                    setShowEmailInput(true);
+                  }}
+                  className="bg-gray-500 rounded text-white px-2 py-0 shadow text-sm md:text-lg md:w-52 md:h-12 hover:bg-gray-700 transition"
+                >
+                  Get Volunteer Report
                 </button>
 
                 <button
@@ -407,9 +439,9 @@ const Dashboard = () => {
                     setReportType("pdf");
                     setShowEmailInput(true);
                   }}
-                  className="bg-gray-500 rounded text-white px-2 py-0  shadow  !text-[12px] sm:!text-lg md:!text-xl md:w-52 md:h-12 hover:bg-gray-700 transition"
+                  className="bg-gray-500 rounded text-white px-2 py-0 shadow text-sm md:text-lg md:w-52 md:h-12 hover:bg-gray-700 transition"
                 >
-                  Get Pdf Report
+                  Get Dashboard Report (PDF)
                 </button>
               </div>
             ) : (
@@ -419,14 +451,14 @@ const Dashboard = () => {
                   placeholder="Enter email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg w-64"
+                  className="px-3 py-2 border border-gray-300  rounded-lg w-64"
                 />
                 <div className="flex gap-2">
                   <button
                     onClick={handleSendReport}
                     className="bg-gray-500 rounded text-white px-2 py-0  shadow  !text-[12px] sm:!text-lg md:!text-xl md:w-52 md:h-12 hover:bg-gray-700 transition"
                   >
-                    Send {reportType === "pdf" ? "PDF" : "Email"} Report
+                    Send Report
                   </button>
                   <button
                     onClick={() => setShowEmailInput(false)}
