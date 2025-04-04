@@ -212,6 +212,14 @@ const Header = () => {
                 </div>
               )}
             </li>
+            <li className="nav-item">
+              <Link
+                to="/classroom"
+                className="no-underline text-black ms-12  sm:text-[18px]   transition-colors duration-200   home-link"
+              >
+                Classroom
+              </Link>
+            </li>
           </ul>
 
           <div className="ms-12 ">
