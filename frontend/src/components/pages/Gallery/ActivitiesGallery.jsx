@@ -83,7 +83,7 @@ const ActivitiesGallery = () => {
       <ToastContainer position="top-right" />
       <div style={{ maxWidth: "1450px", margin: "0 auto", padding: "10px" }}>
         <h2 style={{ fontSize: "3.5rem", marginBottom: "10px", textAlign: "center", color: "#333" }}>
-          Gallery
+         Activity Gallery
         </h2>
 
         {galleryItems.length > 0 ? (
