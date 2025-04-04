@@ -15,8 +15,8 @@ const AddFestivals = () => {
   });
 
   const [coverImageURL, setCoverImageURL] = useState(null);
-  const [photos, setPhotos] = useState([]);
-  const [videos, setVideos] = useState([]);
+  // const [photos, setPhotos] = useState([]);
+  // const [videos, setVideos] = useState([]);
 
   // Handle text input change
   const handleChange = (e) => {
@@ -39,12 +39,12 @@ const AddFestivals = () => {
     });
 
     if (coverImageURL) formDataToSend.append("coverImageURL", coverImageURL);
-    for (let i = 0; i < photos.length; i++) {
-      formDataToSend.append("photos", photos[i]);
-    }
-    for (let i = 0; i < videos.length; i++) {
-      formDataToSend.append("videos", videos[i]);
-    }
+    // for (let i = 0; i < photos.length; i++) {
+    //   formDataToSend.append("photos", photos[i]);
+    // }
+    // for (let i = 0; i < videos.length; i++) {
+    //   formDataToSend.append("videos", videos[i]);
+    // }
 
     try {
       await axios.post(
