@@ -49,7 +49,7 @@ const AddDonationDrive = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/admin/dashboard/cloth-donations/add-cloth-donation",
+        "https://iccheweb.vercel.app/api/admin/dashboard/cloth-donations/add-cloth-donation",
         formDataToSend,
         {
           headers: {

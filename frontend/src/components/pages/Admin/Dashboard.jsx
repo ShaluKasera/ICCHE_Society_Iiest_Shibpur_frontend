@@ -41,7 +41,7 @@ const Dashboard = () => {
     const fetchCounts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/admin/dashboard/counts",
+          "https://iccheweb.vercel.app/api/admin/dashboard/counts",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

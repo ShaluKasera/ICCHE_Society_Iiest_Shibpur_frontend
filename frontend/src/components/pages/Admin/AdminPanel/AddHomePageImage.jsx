@@ -28,7 +28,7 @@ const AddHomePageImage = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/admin/dashboard/add-homePageImage",
+        "https://iccheweb.vercel.app/api/admin/dashboard/add-homePageImage",
         formDataToSend,
         {
           headers: {

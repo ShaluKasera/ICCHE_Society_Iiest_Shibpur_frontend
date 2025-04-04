@@ -43,7 +43,7 @@ const AddAlumni = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/admin/dashboard/alumni/add-alumni",
+        "https://iccheweb.vercel.app/api/admin/dashboard/alumni/add-alumni",
         formDataToSend,
         {
           headers: {

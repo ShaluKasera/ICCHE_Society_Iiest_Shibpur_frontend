@@ -78,7 +78,7 @@ const PendingApproval = () => {
     const loadingToast = toast.loading("Rejecting user...");
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/dashboard/reject/${id}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/reject/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
