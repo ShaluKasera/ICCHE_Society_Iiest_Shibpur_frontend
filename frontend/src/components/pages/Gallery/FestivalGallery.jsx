@@ -18,7 +18,7 @@ const FestivalGallery = () => {
 
     const fetchGallery = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/admin/dashboard/gallery/festival/photos");
+        const response = await axios.get("https://iccheweb.vercel.app/api/admin/dashboard/gallery/festival/photos");
         if (response.data && response.data.success) {
           setGalleryItems(response.data.data);
         } else {
@@ -62,7 +62,7 @@ const FestivalGallery = () => {
 
   const deleteItem = async (itemId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/admin/dashboard/gallery/festival/photos/${itemId}`, {
+      await axios.delete(`https://iccheweb.vercel.app/api/admin/dashboard/gallery/festival/photos/${itemId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setGalleryItems((prevItems) =>

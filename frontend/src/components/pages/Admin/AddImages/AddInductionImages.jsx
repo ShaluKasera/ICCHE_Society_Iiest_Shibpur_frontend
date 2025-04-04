@@ -36,8 +36,8 @@ const AddInductionImages = () => {
 
     const endpoint =
       formData.mediaType === "photo"
-        ? "http://localhost:8000/api/admin/dashboard/inductionGallery/photos/add-photos"
-        : "http://localhost:8000/api/admin/dashboard/inductionGallery/videos/add-videos";
+        ? "https://iccheweb.vercel.app/api/admin/dashboard/inductionGallery/photos/add-photos"
+        : "https://iccheweb.vercel.app/api/admin/dashboard/inductionGallery/videos/add-videos";
 
     const formDataToSend = new FormData();
     formDataToSend.append("title", formData.title);

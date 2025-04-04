@@ -23,7 +23,7 @@ const Volunteers = () => {
     setIsAdmin(!!token);
     const fetchVolunteers = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/volunteers", {
+        const response = await fetch("https://iccheweb.vercel.app/api/volunteers", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         if (!response.ok) throw new Error("Failed to fetch volunteers");
@@ -70,7 +70,7 @@ const Volunteers = () => {
   const deleteVolunteer = async (volunteerId) => {
     try {
       await fetch(
-        `http://localhost:8000/api/admin/dashboard/volunteers/${volunteerId}`);
+        `https://iccheweb.vercel.app/api/admin/dashboard/volunteers/${volunteerId}`);
 
       setVolunteers((prevVolunteers) =>
         prevVolunteers.filter((volunteer) => volunteer._id !== volunteerId)

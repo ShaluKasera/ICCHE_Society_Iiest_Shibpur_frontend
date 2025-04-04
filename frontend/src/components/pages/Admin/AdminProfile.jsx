@@ -20,7 +20,7 @@ const AdminProfile = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:8000/api/admin/profile",
+          "https://iccheweb.vercel.app/api/admin/profile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

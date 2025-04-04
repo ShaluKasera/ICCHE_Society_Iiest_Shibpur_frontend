@@ -23,7 +23,7 @@ const Alumni = () => {
     setIsAdmin(!!token);
     const fetchAlumni = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/alumni");
+        const response = await axios.get("https://iccheweb.vercel.app/api/alumni");
         setAlumni(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch alumni data");
@@ -66,7 +66,7 @@ const Alumni = () => {
   const deleteAlumnus = async (alumId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/dashboard/alumni/${alumId}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/alumni/${alumId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

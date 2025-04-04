@@ -33,7 +33,7 @@ const Footer = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/feedback/add-feedback",
+        "https://iccheweb.vercel.app/api/feedback/add-feedback",
         formData
       );
 

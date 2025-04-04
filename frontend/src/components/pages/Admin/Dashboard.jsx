@@ -72,17 +72,17 @@ const Dashboard = () => {
     let url = ""; // Correctly define URL
     switch (reportType) {
       case "student":
-        url = "http://localhost:8000/api/admin/dashboard/students/reportexcel";
+        url = "https://iccheweb.vercel.app/api/admin/dashboard/students/reportexcel";
         break;
       case "volunteer":
         url =
-          "http://localhost:8000/api/admin/dashboard/volunteers/reportexcel";
+          "https://iccheweb.vercel.app/api/admin/dashboard/volunteers/reportexcel";
         break;
       case "email":
-        url = "http://localhost:8000/api/admin/dashboard/reportemail";
+        url = "https://iccheweb.vercel.app/api/admin/dashboard/reportemail";
         break;
       case "pdf":
-        url = "http://localhost:8000/api/admin/dashboard/reportpdf";
+        url = "https://iccheweb.vercel.app/api/admin/dashboard/reportpdf";
         break;
       default:
         toast.error("Invalid report type");

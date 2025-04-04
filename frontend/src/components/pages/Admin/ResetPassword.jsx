@@ -35,7 +35,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/admin/reset-password/${resetToken}`,
+        `https://iccheweb.vercel.app/api/admin/reset-password/${resetToken}`,
         { password }
       );
 

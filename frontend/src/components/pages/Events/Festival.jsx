@@ -22,7 +22,7 @@ const Festival = () => {
     const fetchFestivals = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/events/festivals"
+          "https://iccheweb.vercel.app/api/events/festivals"
         );
         if (response.data.success) {
           setFestivalEvents(response.data.data);
@@ -70,7 +70,7 @@ const Festival = () => {
   const deleteFestival = async (eventId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/dashboard/events/festivals/${eventId}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/events/festivals/${eventId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

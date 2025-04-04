@@ -20,7 +20,7 @@ const Induction = () => {
     const fetchInductionEvents = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/events/freshersInductions"
+          "https://iccheweb.vercel.app/api/events/freshersInductions"
         );
 
         setInductionEvents(response.data.data || response.data);
@@ -65,7 +65,7 @@ const Induction = () => {
   const deleteInduction = async (eventId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/dashboard/events/freshersInductions/${eventId}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/events/freshersInductions/${eventId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

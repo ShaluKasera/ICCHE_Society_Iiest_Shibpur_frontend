@@ -25,7 +25,7 @@ const ForgotPassword = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/admin/forget-password",
+        "https://iccheweb.vercel.app/api/admin/forget-password",
         { email }
       );
 

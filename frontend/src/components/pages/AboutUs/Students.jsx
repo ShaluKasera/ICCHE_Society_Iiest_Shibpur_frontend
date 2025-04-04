@@ -25,7 +25,7 @@ const Students = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/students");
+        const response = await axios.get("https://iccheweb.vercel.app/api/students");
         setStudents(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch students");
@@ -68,7 +68,7 @@ const Students = () => {
   const deleteStudent = async (studentId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/dashboard/students/${studentId}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/students/${studentId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

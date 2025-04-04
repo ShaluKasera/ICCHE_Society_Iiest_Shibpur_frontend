@@ -10,7 +10,7 @@ const Classroom = () => {
   useEffect(() => {
     const fetchClassrooms = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/classroom");
+        const response = await axios.get("https://iccheweb.vercel.app/api/classroom");
 
         if (Array.isArray(response.data.data)) {
           // Fix: Extract actual data array

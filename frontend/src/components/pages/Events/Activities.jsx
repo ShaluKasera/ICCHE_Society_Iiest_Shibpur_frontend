@@ -27,7 +27,7 @@ const Activities = () => {
     const fetchActivities = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/events/activities"
+          "https://iccheweb.vercel.app/api/events/activities"
         );
         // console.log("Fetched Activities:", response.data);
         setActivities(response.data); // Store activities with their Object IDs
@@ -72,7 +72,7 @@ const Activities = () => {
   const deleteActivity = async (activityId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/dashboard/events/activities/${activityId}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/events/activities/${activityId}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

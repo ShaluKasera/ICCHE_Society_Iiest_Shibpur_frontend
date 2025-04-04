@@ -22,7 +22,7 @@ const ClothDonation = () => {
 
   const fetchClothDonations = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/donation-drive/cloth-donations");
+      const response = await axios.get("https://iccheweb.vercel.app/api/donation-drive/cloth-donations");
       setClothDonations(response.data);
     } catch (err) {
       setError("Failed to fetch donation events.");
