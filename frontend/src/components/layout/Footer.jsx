@@ -6,8 +6,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import axios from "axios";
 import { toast, ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaPhone, FaLocationDot } from "react-icons/fa6";
+
+
+
 
 const Footer = () => {
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -62,41 +67,83 @@ const Footer = () => {
         transition={Slide}
       />
 
-      <div className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-8 lg:gap-12">
+      <div className="flex flex-col md:px-10 px-0 items-center gap-6 md:flex-row md:justify-center md:gap-8 lg:gap-12">
         <div className="w-full text-center">
-          <h1 className="text-2xl font-extrabold">CONTACT US</h1>
-          <p className="text-gray-600 mt-2">We'd love to hear from you!</p>
-
           <div className="flex flex-col sm:flex-row mt-6">
-            <div className="w-full sm:w-1/2 flex flex-col items-center sm:items-start p-4">
-              <h2 className="text-lg font-extrabold mb-2">Our Classroom</h2>
-              <p className="text-gray-700">+91 465858588</p>
-              <p className="text-gray-700">Slater Hall</p>
+            <div className="w-full sm:w-1/2  flex flex-col items-center sm:items-start p-4">
+              <h2 className="text-lg font-extrabold mb-2">Contact Details</h2>
+              <p className="text-start">If you want to be a part of Icche, please feel free to reach out to us.</p>
+              <p className="text-gray-700 flex text-start">
+                <FaPhone className="text-green-600 mt-1 me-2" />
+                +91 7004610494, +91 9660014668, +91 829987013
+              </p>
+              <p className="text-gray-700 flex">
+                <FaLocationDot className="text-red-500 mt-0.5 me-2"/>
+                Slater Hall
+              </p>
               <p className="text-gray-700">
                 IIEST, Shibpur, Howrah, West Bengal
               </p>
             </div>
 
-            <div className="w-full sm:w-1/2 flex flex-col items-center p-4">
+            <div className="w-full sm:w-1/2 flex  flex-col items-center p-4">
+              <h2 className="text-lg font-semibold mb-2">Links</h2>
+             
+              
+              <ul className=" text-start">
+                <li className="mt-2">
+                  <Link to='/' className="no-underline  text-black home-link">Home</Link>
+                </li>
+                <li className="mt-2"> 
+                  <Link to='/gallery' className="no-underline  text-black home-link">Gallery</Link>
+                </li>
+                <li className="mt-2">
+                  <Link to='/about/volunteers' className="no-underline text-black home-link">Volunteers</Link>
+                </li>
+                <li className="mt-2">
+                  <Link to='/about/students' className="no-underline text-black home-link">Students</Link>
+                </li>
+                <li className="mt-2">
+                  <Link to='/about/alumni' className="no-underline text-black home-link">Alumni</Link>
+                </li>
+                <li className="mt-2">
+                  <Link to='/about' className="no-underline text-black home-link">About</Link>
+                </li>
+              </ul>
+             
+            </div>
+            <div className="w-full sm:w-1/2 flex  flex-col items-center p-4">
               <h2 className="text-lg font-semibold mb-2">Follow Us</h2>
               <ul className="flex gap-6 mt-3">
                 <li>
-                  <Link to="https://www.facebook.com/icchesistac" target="_blank">
+                  <Link
+                    to="https://www.facebook.com/icchesistac"
+                    target="_blank"
+                  >
                     <BsFacebook className="size-7 text-blue-900" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="https://www.instagram.com/icche.iiests/" target="_blank">
+                  <Link
+                    to="https://www.instagram.com/icche.iiests/"
+                    target="_blank"
+                  >
                     <FaSquareInstagram className="size-7 text-pink-800" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="https://whatsapp.com/channel/0029VaABXT57oQhYfacKWQ2b" target="_blank">
+                  <Link
+                    to="https://whatsapp.com/channel/0029VaABXT57oQhYfacKWQ2b"
+                    target="_blank"
+                  >
                     <FaWhatsapp className="size-7 text-blue-700" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="https://www.linkedin.com/company/icche-iiest/" target="_blank">
+                  <Link
+                    to="https://www.linkedin.com/company/icche-iiest/"
+                    target="_blank"
+                  >
                     <FaLinkedin className="size-7 text-blue-500" />
                   </Link>
                 </li>

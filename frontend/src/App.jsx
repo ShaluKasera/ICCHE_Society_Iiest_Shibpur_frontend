@@ -48,7 +48,11 @@ import AddDonationDrive from './components/pages/Admin/AdminPanel/AddDonationDri
 function App() {
   return(
     <BrowserRouter>
+   
     <Routes>
+      
+
+     
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/about/alumni' element={<Alumni/>}/>
@@ -93,8 +97,9 @@ function App() {
 
       <Route path='*' element={<Error/>}/>
 
-
+      
     </Routes>
+   
     </BrowserRouter>
   )
 }
