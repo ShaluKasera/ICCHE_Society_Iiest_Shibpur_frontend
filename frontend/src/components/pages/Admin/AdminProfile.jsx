@@ -74,7 +74,7 @@ const AdminProfile = () => {
           {/* Profile Content */}
           <div className="mt-14">
             <h2 className="text-2xl font-bold">{admin?.fullName || "N/A"}</h2>
-            <div className="w-4/6 text-start mx-auto flex flex-col items-center p-2">
+            <div className="w-4/6 text-start mx-auto flex flex-col p-2">
               <div className="mb-2">
                 <strong className="me-2">Email:</strong> {admin?.email || "N/A"}
               </div>
@@ -92,7 +92,7 @@ const AdminProfile = () => {
               </div>
 
               {/* Volunteer-specific details */}
-              {admin?.role === "volunteer" && (
+              {admin?.role === "Volunteer" && (
                 <>
                   <div className="mb-2">
                     <strong className="me-2">Year:</strong> {admin?.year || "N/A"}

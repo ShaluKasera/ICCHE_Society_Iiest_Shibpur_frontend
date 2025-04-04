@@ -6,6 +6,8 @@ import { toast, ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
 const Induction = () => {
   const [inductionEvents, setInductionEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -102,20 +104,20 @@ const Induction = () => {
           {inductionEvents.map((event) => (
             <div
               key={event._id}
-              className="border  bg-gray-100 rounded-lg p-4 shadow-md relative"
+              className="border  bg-gray-100 rounded-lg p-0 shadow-md relative"
             >
               {event.coverImageURL && (
                 <img
                   src={event.coverImageURL}
                   alt={event.title}
-                  className="w-full h-48 object-cover border rounded-lg cursor-pointer"
+                  className="w-full h-48 object-cover   rounded-lg cursor-pointer"
                 />
               )}
               <div className="p-4 text-left">
                 <h3 className="text-lg text-center font-semibold text-blue-600">
                   {event.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{event.description}</p>
+                <p className="text-gray-600  text-sm">{event.description}</p>
                 <p className="flex gap-2  ">
                   <MdDateRange className="font-extrabold  mt-0 text-red-600 text-2xl" />{" "}
                   {new Date(event.date).toLocaleDateString()}
@@ -134,8 +136,13 @@ const Induction = () => {
                   <strong>Volunteers Present:</strong> {event.volunteerPresent}
                 </p>
 
+                <div className="flex justify-center items-center mt-3">
+                <Link to='/gallery/induction' className="  px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors  duration-300">
+                     Images & Videos
+                  </Link>
+                </div>
                 {/* Photos Section */}
-                {event.photos && event.photos.length > 0 && (
+                {/* {event.photos && event.photos.length > 0 && (
                   <div className="mt-3">
                     <h3 className="font-semibold">Photos:</h3>
                     <div className="flex gap-2 overflow-x-auto">
@@ -149,10 +156,10 @@ const Induction = () => {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {/* Videos Section */}
-                {event.videos && event.videos.length > 0 && (
+                {/* {event.videos && event.videos.length > 0 && (
                   <div className="mt-3">
                     <h3 className="font-semibold">Videos:</h3>
                     <div className="flex gap-2 overflow-x-auto">
@@ -168,7 +175,7 @@ const Induction = () => {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
 
                 {/* Delete & Edit Icons (Only if Logged In) */}
                 {isLoggedIn && (

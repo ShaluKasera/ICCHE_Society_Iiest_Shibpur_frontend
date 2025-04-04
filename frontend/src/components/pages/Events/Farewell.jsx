@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Farewell = () => {
   const [farewellEvents, setFarewellEvents] = useState([]);
@@ -98,7 +99,7 @@ const Farewell = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-2">
         {farewellEvents.map((event) => (
-          <div key={event._id} className="border bg-gray-100 rounded-lg p-4 shadow-md relative">
+          <div key={event._id} className="border bg-gray-100 rounded-lg p-0 shadow-md relative">
             {/* Cover Image */}
             <img
               src={event.coverImageURL || "/uploads/default.png"}
@@ -108,7 +109,7 @@ const Farewell = () => {
 
             {/* Event Details */}
             <h1 className="text-xl text-center font-semibold mt-2">{event.title}</h1>
-            <div className="px-10">
+            <div className="py-6 px-10">
 
             
             <p className="text-gray-600">{event.description}</p>
@@ -119,8 +120,12 @@ const Farewell = () => {
             <p><strong>Final Year Students Present:</strong> {event.finalYearStudentsPresent}</p>
             <p><strong>Juniors Present:</strong> {event.juniorPresent}</p>
 
-            {/* Photos Section */}
-            {event.photos && event.photos.length > 0 && (
+            <div className="flex justify-center items-center mt-3">
+                <Link to='/gallery/farewell' className="no-underline  px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors  duration-300">
+                     Images & Videos
+                  </Link>
+                </div>
+            {/* {event.photos && event.photos.length > 0 && (
               <div className="mt-3">
                 <h3 className="font-semibold">Photos:</h3>
                 <div className="flex gap-2 overflow-x-auto">
@@ -134,11 +139,11 @@ const Farewell = () => {
                   ))}
                 </div>
               </div>
-            )}
+            )} */}
             </div>
 
             {/* Videos Section */}
-            {event.videos && event.videos.length > 0 && (
+            {/* {event.videos && event.videos.length > 0 && (
               <div className="mt-3">
                 <h3 className="font-semibold">Videos:</h3>
                 <div className="flex gap-2 overflow-x-auto">
@@ -150,7 +155,7 @@ const Farewell = () => {
                   ))}
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Show Delete & Edit icons only if user is logged in */}
             {isLoggedIn && (

@@ -251,6 +251,54 @@ const Dashboard = () => {
               label="Add Gallery"
               isOpen={isSidebarOpen}
             />
+              <SidebarItem
+              to="/admin/dashboard/add-festival-images"
+              icon={
+                <ImagePlus
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Festival images"
+              isOpen={isSidebarOpen}
+            />
+             <SidebarItem
+              to="/admin/dashboard/add-farewell-images"
+              icon={
+                <ImagePlus
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Farewell images"
+              isOpen={isSidebarOpen}
+            />
+             <SidebarItem
+              to="/admin/dashboard/add-induction-images"
+              icon={
+                <ImagePlus
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Induction images"
+              isOpen={isSidebarOpen}
+            />
+             <SidebarItem
+              to="/admin/dashboard/add-activities-images"
+              icon={
+                <ImagePlus
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Activities images"
+              isOpen={isSidebarOpen}
+            />
 
 
             {/* Pending Approval Section */}

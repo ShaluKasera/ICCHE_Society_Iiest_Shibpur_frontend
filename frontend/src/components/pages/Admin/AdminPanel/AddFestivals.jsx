@@ -174,7 +174,7 @@ const AddFestivals = () => {
           </label>
 
           {/* Photos Upload */}
-          <label className="col-span-2">
+          {/* <label className="col-span-2">
             Photos:
             <input
               type="file"
@@ -183,10 +183,10 @@ const AddFestivals = () => {
               onChange={(e) => handleFileChange(e, setPhotos)}
               className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition w-full"
             />
-          </label>
+          </label> */}
 
           {/* Videos Upload */}
-          <label className="col-span-2">
+          {/* <label className="col-span-2">
             Videos:
             <input
               type="file"
@@ -195,7 +195,7 @@ const AddFestivals = () => {
               onChange={(e) => handleFileChange(e, setVideos)}
               className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition w-full"
             />
-          </label>
+          </label> */}
 
           {/* Submit Button */}
           <div className="col-span-2 flex justify-center">
