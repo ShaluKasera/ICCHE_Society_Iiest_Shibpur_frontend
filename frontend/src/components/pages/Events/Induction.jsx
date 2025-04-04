@@ -137,7 +137,7 @@ const Induction = () => {
                 </p>
 
                 <div className="flex justify-center items-center mt-3">
-                <Link to='/gallery/induction' className="  px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors  duration-300">
+                <Link to='/gallery/induction' className="no-underline  px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors  duration-300">
                      Images & Videos
                   </Link>
                 </div>
