@@ -18,6 +18,7 @@ import {
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaPlus } from "react-icons/fa6";
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [counts, setCounts] = useState({
@@ -300,6 +301,19 @@ const Dashboard = () => {
               isOpen={isSidebarOpen}
             />
 
+<SidebarItem
+              to="/admin/dashboard/donation"
+              icon={
+                <FaPlus
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Donation"
+              isOpen={isSidebarOpen}
+            />
+
 
             {/* Pending Approval Section */}
             <div className="mt-6 border-t border-gray-700 pt-4">
@@ -327,6 +341,8 @@ const Dashboard = () => {
                 label="Feedbacks"
                 isOpen={isSidebarOpen}
               />
+
+              
             </div>
           </nav>
         </div>

@@ -43,6 +43,7 @@ import FestivalGallery from './components/pages/Gallery/FestivalGallery';
 import FarewellGallery from './components/pages/Gallery/FarewellGallery';
 import InductionGallery from './components/pages/Gallery/InductionGallery';
 import ActivitiesGallery from './components/pages/Gallery/ActivitiesGallery';
+import AddDonationDrive from './components/pages/Admin/AdminPanel/AddDonationDrive';
 
 function App() {
   return(
@@ -88,6 +89,8 @@ function App() {
       <Route path='/admin/dashboard/add-farewell-images' element={<AddFarewellImages/>}/>
       <Route path='/admin/dashboard/add-induction-images' element={<AddInductionImages/>}/>
       <Route path='/admin/dashboard/add-activities-images' element={<AddActivitiesImages/>}/>
+      <Route path='/admin/dashboard/donation' element={<AddDonationDrive/>}/>
+
       <Route path='*' element={<Error/>}/>
 
 
