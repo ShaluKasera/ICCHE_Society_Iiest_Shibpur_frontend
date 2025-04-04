@@ -44,6 +44,8 @@ import FarewellGallery from './components/pages/Gallery/FarewellGallery';
 import InductionGallery from './components/pages/Gallery/InductionGallery';
 import ActivitiesGallery from './components/pages/Gallery/ActivitiesGallery';
 import AddDonationDrive from './components/pages/Admin/AdminPanel/AddDonationDrive';
+import Classroom from './components/pages/Classroom/Classroom';
+import AddClassroom from './components/pages/Admin/AdminPanel/AddClassroom';
 
 function App() {
   return(
@@ -93,7 +95,9 @@ function App() {
       <Route path='/admin/dashboard/add-farewell-images' element={<AddFarewellImages/>}/>
       <Route path='/admin/dashboard/add-induction-images' element={<AddInductionImages/>}/>
       <Route path='/admin/dashboard/add-activities-images' element={<AddActivitiesImages/>}/>
-      <Route path='/admin/dashboard/donation' element={<AddDonationDrive/>}/>
+      <Route path='/admin/dashboard/add-classroom' element={<AddClassroom/>}/>
+      <Route path='/admin/dashboard/add-donation' element={<AddDonationDrive/>}/>
+      <Route path='/classroom' element={<Classroom/>}/>
 
       <Route path='*' element={<Error/>}/>
 

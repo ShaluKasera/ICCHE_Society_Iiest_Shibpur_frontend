@@ -19,6 +19,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaPlus } from "react-icons/fa6";
+import { SiGoogleclassroom } from "react-icons/si";
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [counts, setCounts] = useState({
@@ -113,12 +114,16 @@ const Dashboard = () => {
         <ToastContainer position="top-right" autoClose={3000} />
         {/* Sidebar */}
         <div
-           className={`bg-gray-300 text-black  transition-all duration-300 
+          className={`bg-gray-300 text-black  transition-all duration-300 
             ${isSidebarOpen ? "w-30 md:w-64" : "w-10 md:w-16"} 
              overflow-y-auto`}
         >
           <div className="flex justify-between items-center p-2 mt-3">
-            <h2 className={`!text-[16px] sm:!text-lg md:!text-4xl font-extrabold text-gray-800 mt-1 ${!isSidebarOpen && "hidden"}`}>
+            <h2
+              className={`!text-[16px] sm:!text-lg md:!text-4xl font-extrabold text-gray-800 mt-1 ${
+                !isSidebarOpen && "hidden"
+              }`}
+            >
               Admin Panel
             </h2>
             <button
@@ -252,7 +257,7 @@ const Dashboard = () => {
               label="Add Gallery"
               isOpen={isSidebarOpen}
             />
-              <SidebarItem
+            <SidebarItem
               to="/admin/dashboard/add-festival-images"
               icon={
                 <ImagePlus
@@ -264,7 +269,7 @@ const Dashboard = () => {
               label="Add Festival images"
               isOpen={isSidebarOpen}
             />
-             <SidebarItem
+            <SidebarItem
               to="/admin/dashboard/add-farewell-images"
               icon={
                 <ImagePlus
@@ -276,7 +281,7 @@ const Dashboard = () => {
               label="Add Farewell images"
               isOpen={isSidebarOpen}
             />
-             <SidebarItem
+            <SidebarItem
               to="/admin/dashboard/add-induction-images"
               icon={
                 <ImagePlus
@@ -288,7 +293,7 @@ const Dashboard = () => {
               label="Add Induction images"
               isOpen={isSidebarOpen}
             />
-             <SidebarItem
+            <SidebarItem
               to="/admin/dashboard/add-activities-images"
               icon={
                 <ImagePlus
@@ -301,8 +306,8 @@ const Dashboard = () => {
               isOpen={isSidebarOpen}
             />
 
-<SidebarItem
-              to="/admin/dashboard/donation"
+            <SidebarItem
+              to="/admin/dashboard/add-donation"
               icon={
                 <FaPlus
                   className={`size-3 md:size-5 ${
@@ -313,7 +318,18 @@ const Dashboard = () => {
               label="Add Donation"
               isOpen={isSidebarOpen}
             />
-
+            <SidebarItem
+              to="/admin/dashboard/add-classroom"
+              icon={
+                <SiGoogleclassroom
+                  className={`size-3 md:size-5 ${
+                    isSidebarOpen ? "md:ms-4" : "ms-2 "
+                  }`}
+                />
+              }
+              label="Add Classes"
+              isOpen={isSidebarOpen}
+            />
 
             {/* Pending Approval Section */}
             <div className="mt-6 border-t border-gray-700 pt-4">
@@ -341,8 +357,6 @@ const Dashboard = () => {
                 label="Feedbacks"
                 isOpen={isSidebarOpen}
               />
-
-              
             </div>
           </nav>
         </div>
@@ -360,7 +374,7 @@ const Dashboard = () => {
 
           {/* Stats Section */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 ">
-            <StatCard title="Students" count={counts.totalStudents}/>
+            <StatCard title="Students" count={counts.totalStudents} />
             <StatCard title="Volunteers" count={counts.totalVolunteers} />
             <StatCard title="Alumni" count={counts.totalAlumni} />
             <StatCard title="Gallery Items" count={counts.totalGalleryItems} />
@@ -446,7 +460,7 @@ const SidebarItem = ({ to, icon, label, isOpen }) => {
 const StatCard = ({ title, count }) => {
   return (
     <div className="bg-white p-2  rounded-md shadow text-center">
-     <h3 className="!text-[12px] sm:!text-lg md:!text-2xl font-bold mt-1 md:mt-2 ">
+      <h3 className="!text-[12px] sm:!text-lg md:!text-2xl font-bold mt-1 md:mt-2 ">
         {title}
       </h3>
       <p className="text-xs sm:text-lg md:text-2xl font-bold text-blue-500 mt-1 md:mt-2">
@@ -455,7 +469,5 @@ const StatCard = ({ title, count }) => {
     </div>
   );
 };
-
-
 
 export default Dashboard;

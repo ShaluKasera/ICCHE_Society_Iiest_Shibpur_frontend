@@ -4,20 +4,15 @@ import { toast, ToastContainer, Slide } from "react-toastify";
 import Layout from "../../../layout/Layout";
 import "react-toastify/dist/ReactToastify.css";
 
-const AddDonationDrive = () => {
+const AddClassroom = () => {
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    location: "",
+    day: "",
+    studentsPresent: "",
+    volunteersPresent: "",
     date: "",
-    studentsReceived: "",
-    volunteerPresent: "",
-    parentsReceived:"",
   });
 
   const [coverImageURL, setCoverImageURL] = useState(null);
-//   const [photos, setPhotos] = useState([]);
-//   const [videos, setVideos] = useState([]);
 
   // Handle text input change
   const handleChange = (e) => {
@@ -32,7 +27,7 @@ const AddDonationDrive = () => {
   // Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loadingToast = toast.loading("Adding cloth donation...");
+    const loadingToast = toast.loading("Adding Classes...");
 
     const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -40,16 +35,15 @@ const AddDonationDrive = () => {
     });
 
     if (coverImageURL) formDataToSend.append("coverImageURL", coverImageURL);
-    // for (let i = 0; i < photos.length; i++) {
-    //   formDataToSend.append("photos", photos[i]);
-    // }
-    // for (let i = 0; i < videos.length; i++) {
-    //   formDataToSend.append("videos", videos[i]);
-    // }
+
+    console.log("Form Data Entries:");
+    for (let pair of formDataToSend.entries()) {
+      console.log(pair[0], pair[1]);
+    }
 
     try {
       await axios.post(
-        "http://localhost:8000/api/admin/dashboard/cloth-donations/add-cloth-donation",
+        "http://localhost:8000/api/admin/dashboard/add-classroom",
         formDataToSend,
         {
           headers: {
@@ -60,7 +54,7 @@ const AddDonationDrive = () => {
       );
 
       toast.update(loadingToast, {
-        render: "Cloth Donation added successfully!",
+        render: "Classes added successfully!",
         type: "success",
         isLoading: false,
         autoClose: 3000,
@@ -68,21 +62,16 @@ const AddDonationDrive = () => {
       });
 
       setFormData({
-        title: "",
-        description: "",
-        location: "",
+        day: "",
+        studentsPresent: "",
+        volunteersPresent: "",
         date: "",
-        volunteerPresent: "",
-        studentsReceived:"",
-        parentReceived:"",
       });
       setCoverImageURL(null);
-    //   setPhotos([]);
-    //   setVideos([]);
     } catch (error) {
       console.error("Error:", error.response?.data || error.message);
       toast.update(loadingToast, {
-        render: "Failed to add Donation!",
+        render: "Failed to add classes!",
         type: "error",
         isLoading: false,
         autoClose: 3000,
@@ -93,83 +82,51 @@ const AddDonationDrive = () => {
 
   return (
     <Layout>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        transition={Slide}
-      />
-
-      <div className="w-[90%] max-w-xl mx-auto p-6  bg-white rounded-lg shadow-lg mt-7 text-xs sm:text-base ">
+      <ToastContainer />
+      <div className="w-[90%] max-w-xl mx-auto p-6  bg-white rounded-lg shadow-lg mt-7 text-xs sm:text-base mb-7 ">
         <h2 className="text-2xl text-center font-semibold text-gray-700 mb-6">
-          Add Donation Drive
+          Add Last Class
         </h2>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
           <input
             type="text"
-            name="title"
-            placeholder="Title"
-            value={formData.title}
+            name="day"
+            placeholder="Day"
+            value={formData.day}
             onChange={handleChange}
             required
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
           />
-
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-            required
-            className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-          />
-
-          <input
-            type="text"
-            name="location"
-            placeholder="location"
-            value={formData.location}
-            onChange={handleChange}
-            required
-            className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-          />
-
           <input
             type="date"
             name="date"
+            placeholder="Date"
             value={formData.date}
             onChange={handleChange}
             required
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
           />
+          <input
+            type="number"
+            name="studentsPresent"
+            placeholder="Students Present"
+            value={formData.studentsPresent}
+            onChange={handleChange}
+            required
+            className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
+          />
 
           <input
             type="number"
-            name="volunteerPresent"
+            name="volunteersPresent"
             placeholder="Volunteers Present"
-            value={formData.volunteerPresent}
+            value={formData.volunteersPresent}
             onChange={handleChange}
             required
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
           />
- <input
-            type="number"
-            name="studentsReceived"
-            placeholder="Student Received"
-            value={formData.studentsReceived}
-            onChange={handleChange}
-            required
-            className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-          />
-           <input
-            type="number"
-            name="parentsReceived"
-            placeholder="Parent Received"
-            value={formData.parentsReceived}
-            onChange={handleChange}
-            required
-            className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-          />
+
           {/* Cover Image Upload */}
           <label className="col-span-2">
             Cover Image:
@@ -182,37 +139,12 @@ const AddDonationDrive = () => {
             />
           </label>
 
-          {/* Photos Upload */}
-          {/* <label className="col-span-2">
-            Photos:
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={(e) => handleFileChange(e, setPhotos)}
-              className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition w-full"
-            />
-          </label> */}
-
-          {/* Videos Upload */}
-          {/* <label className="col-span-2">
-            Videos:
-            <input
-              type="file"
-              accept="video/*"
-              multiple
-              onChange={(e) => handleFileChange(e, setVideos)}
-              className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition w-full"
-            />
-          </label> */}
-
-          {/* Submit Button */}
           <div className="col-span-2 flex justify-center">
             <button
               type="submit"
               className="border-2 border-gray-600 py-2 link  px-5 mt-2 mb-4 rounded"
             >
-              Add Donation
+              Add Classes
             </button>
           </div>
         </form>
@@ -221,9 +153,4 @@ const AddDonationDrive = () => {
   );
 };
 
-
-
-
-
-
-export default AddDonationDrive
+export default AddClassroom;
