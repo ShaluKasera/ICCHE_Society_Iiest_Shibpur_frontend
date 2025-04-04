@@ -7,6 +7,8 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"; // Import icons
 import { MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiStudentFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
 
 const Activities = () => {
   const [activities, setActivities] = useState([]);
@@ -105,7 +107,7 @@ const Activities = () => {
           {activities.map((activity) => (
             <div
               key={activity._id}
-              className="border  bg-gray-100 rounded-lg p-4 shadow-md relative"
+              className="border  bg-gray-100 rounded-lg p-0 shadow-md relative"
             >
               <img
                 src={activity.coverImageURL}
@@ -116,7 +118,7 @@ const Activities = () => {
               <h1 className="text-4xl text-center font-bold mt-2">
                 {activity.title}
               </h1>
-              <div className=" px-10">
+              <div className="py-6 px-10">
                 <p className="text-gray-600">{activity.description}</p>
                 <p className="flex gap-2  ">
                   <MdDateRange className="font-extrabold  mt-0 text-red-600 text-2xl" />{" "}
@@ -141,7 +143,15 @@ const Activities = () => {
                   <strong>Volunteers Present:</strong>{" "}
                   {activity.volunteersPresent}
                 </p>
+                <div className="flex justify-center items-center mt-3">
+                <Link to='/gallery/activities' className=" no-underline  px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors  duration-300">
+                     Images & Videos
+                  </Link>
+                </div>
+                
+                  
               </div>
+              
 
               {/* Hide ID but use it for actions */}
               {isLoggedIn && (

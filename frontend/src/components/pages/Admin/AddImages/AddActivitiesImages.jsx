@@ -1,10 +1,11 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer, Slide } from "react-toastify";
-import Layout from "../../../layout/Layout";
 import "react-toastify/dist/ReactToastify.css";
+import Layout from '../../../layout/Layout'
 
-const AddGallery = () => {
+const AddActivitiesImages = () => {
   const [formData, setFormData] = useState({
     title: "",
     mediaType: "", // "photo" or "video"
@@ -35,8 +36,8 @@ const AddGallery = () => {
 
     const endpoint =
       formData.mediaType === "photo"
-        ? "http://localhost:8000/api/admin/dashboard/gallery/photos/add-photos"
-        : "http://localhost:8000/api/admin/dashboard/gallery/videos/add-videos";
+        ? "http://localhost:8000/api/admin/dashboard/activityGallery/photos/add-photos"
+        : "http://localhost:8000/api/admin/dashboard/activityGallery/videos/add-videos";
 
     const formDataToSend = new FormData();
     formDataToSend.append("title", formData.title);
@@ -82,7 +83,7 @@ const AddGallery = () => {
       <ToastContainer position="top-right" autoClose={3000} transition={Slide} />
       <div className="w-[90%] max-w-sm mx-auto p-6 min-w-2xs bg-white rounded-lg shadow-lg text-xs sm:text-base mt-20 flex flex-col items-center justify-center">
         <h2 className="text-2xl text-center font-semibold text-gray-700 mb-6">
-          Add to Gallery
+          Add to Activity images & videos
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Dropdown for selecting Photo or Video */}
@@ -128,7 +129,9 @@ const AddGallery = () => {
         </form>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default AddGallery;
+
+
+export default AddActivitiesImages

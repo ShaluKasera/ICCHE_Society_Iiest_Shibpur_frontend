@@ -35,6 +35,15 @@ import Feedback from './components/pages/Admin//AdminPanel/Feedback';
 import AddNotification from './components/pages/Admin/AdminPanel/AddNotification';
 import Notification from './components/pages/Admin/Notification';
 import AddGallery from './components/pages/Admin/AdminPanel/AddGallery';
+import AddFestivalImages from './components/pages/Admin/AddImages/AddFestivalImages';
+import AddFarewellImages from './components/pages/Admin/AddImages/AddFarewellImages';
+import AddInductionImages from './components/pages/Admin/AddImages/AddInductionImages';
+import AddActivitiesImages from './components/pages/Admin/AddImages/AddActivitiesImages';
+import FestivalGallery from './components/pages/Gallery/FestivalGallery';
+import FarewellGallery from './components/pages/Gallery/FarewellGallery';
+import InductionGallery from './components/pages/Gallery/InductionGallery';
+import ActivitiesGallery from './components/pages/Gallery/ActivitiesGallery';
+
 function App() {
   return(
     <BrowserRouter>
@@ -59,6 +68,10 @@ function App() {
       <Route path='/events/festivals' element={<Festival/>}/>
       <Route path='/events/induction' element={<Induction/>}/>
       <Route path='/gallery' element={<Gallery/>}/>
+      <Route path='/gallery/festival' element={<FestivalGallery/>}/>
+      <Route path='/gallery/farewell' element={<FarewellGallery/>}/>
+      <Route path='/gallery/induction' element={<InductionGallery/>}/>
+      <Route path='/gallery/activities' element={<ActivitiesGallery/>}/>
       <Route path='/admin/dashboard/add-students' element={<AddStudentForm/>}/>
       <Route path='/admin/dashboard/add-volunteers' element={<AddVolunteer/>}/>
       <Route path='/admin/dashboard/add-alumni' element={<AddAlumni/>}/>
@@ -71,6 +84,10 @@ function App() {
       <Route path='/admin/dashboard/add-notification' element={<AddNotification/>}/>
       <Route path='/home/notification' element={<Notification/>}/>
       <Route path='/admin/dashboard/add-gallery' element={<AddGallery/>}/>
+      <Route path='/admin/dashboard/add-festival-images' element={<AddFestivalImages/>}/>
+      <Route path='/admin/dashboard/add-farewell-images' element={<AddFarewellImages/>}/>
+      <Route path='/admin/dashboard/add-induction-images' element={<AddInductionImages/>}/>
+      <Route path='/admin/dashboard/add-activities-images' element={<AddActivitiesImages/>}/>
       <Route path='*' element={<Error/>}/>
 
 

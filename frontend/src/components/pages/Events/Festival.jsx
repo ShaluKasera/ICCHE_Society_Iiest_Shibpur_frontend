@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiStudentFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
 
 const Festival = () => {
   const [festivalEvents, setFestivalEvents] = useState([]);
@@ -91,79 +93,80 @@ const Festival = () => {
     <Layout>
       <div className="container overflow-auto">
         <ToastContainer position="top-right" autoClose={3000} />
-       
-          <h1 className=" mb-4 text-center">
-            Festival Events
-          </h1>
 
-          {loading && (
-            <p className="text-lg text-gray-600">Loading festival events...</p>
-          )}
-          {error && <p className="text-red-500">{error}</p>}
+        <h1 className=" mb-4 text-center">Festival Events</h1>
 
-          {!loading && !error && festivalEvents.length === 0 && (
-            <p className="text-lg text-gray-500">No festival events found.</p>
-          )}
+        {loading && (
+          <p className="text-lg text-gray-600">Loading festival events...</p>
+        )}
+        {error && <p className="text-red-500">{error}</p>}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-2">
-            {festivalEvents.map((event) => (
-              <div
-                key={event._id}
-                className="border  bg-gray-100 rounded-lg p-4 shadow-md relative"
-              >
-                {event.coverImageURL && (
-                  <img
-                    src={event.coverImageURL}
-                    alt={event.title}
-                    className="w-full h-48 object-cover border rounded-lg cursor-pointer"
-                  />
-                )}
+        {!loading && !error && festivalEvents.length === 0 && (
+          <p className="text-lg text-gray-500">No festival events found.</p>
+        )}
 
-                <h1 className="text-4xl text-center font-bold mt-2">
-                  {event.title}
-                </h1>
-                <div className=" px-10">
-                  <p className="text-gray-600">{event.description}</p>
-                  <p className="flex gap-2  ">
-                    <FaLocationDot className="font-extrabold  mt-0 text-red-600 text-xl" />
-                    {event.venue}
-                  </p>
-                  <p className="flex gap-2  ">
-                    <MdDateRange className="font-extrabold  mt-0 text-red-600 text-2xl" />{" "}
-                    {new Date(event.date).toLocaleDateString()}
-                  </p>
-                  <p className="flex gap-2  ">
-                    <PiStudentFill className="font-extrabold  mt-0 text-2xl" />
-                    {event.studentsPresent}
-                  </p>
-                  <p>
-                    <strong>Volunteers Present:</strong>{" "}
-                    {event.volunteersPresent}
-                  </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-2">
+          {festivalEvents.map((event) => (
+            <div
+              key={event._id}
+              className="border  bg-gray-100 rounded-lg p-0 shadow-md relative"
+            >
+              {event.coverImageURL && (
+                <img
+                  src={event.coverImageURL}
+                  alt={event.title}
+                  className="w-full h-48 object-cover border rounded-lg cursor-pointer"
+                />
+              )}
+
+              <h1 className="text-4xl text-center font-bold mt-2">
+                {event.title}
+              </h1>
+              <div className="py-6 px-10">
+                <p className="text-gray-600">{event.description}</p>
+                <p className="flex gap-2  ">
+                  <FaLocationDot className="font-extrabold  mt-0 text-red-600 text-xl" />
+                  {event.venue}
+                </p>
+                <p className="flex gap-2  ">
+                  <MdDateRange className="font-extrabold  mt-0 text-red-600 text-2xl" />{" "}
+                  {new Date(event.date).toLocaleDateString()}
+                </p>
+                <p className="flex gap-2  ">
+                  <PiStudentFill className="font-extrabold  mt-0 text-2xl" />
+                  {event.studentsPresent}
+                </p>
+                <p>
+                  <strong>Volunteers Present:</strong> {event.volunteersPresent}
+                </p>
+                <div className="flex justify-center items-center mt-3">
+                <Link to='/gallery/festival' className=" no-underline px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors  duration-300">
+                     Images & Videos
+                  </Link>
                 </div>
-                {/* Delete & Edit Icons (Only if Logged In) */}
-                {isLoggedIn && (
-                  <div className="absolute top-3 right-3 flex gap-3">
-                    <button
-                      onClick={() => confirmDelete(event._id)}
-                      className="text-red-600 hover:text-red-800"
-                      title="Delete Event"
-                    >
-                      <FaTrash size={20} />
-                    </button>
-                    <button
-                      onClick={() => toast.info("Edit feature coming soon!")}
-                      className="text-blue-600 hover:text-blue-800"
-                      title="Edit Event"
-                    >
-                      <FaEdit size={20} />
-                    </button>
-                  </div>
-                )}
               </div>
-            ))}
-          </div>
-       
+              {/* Delete & Edit Icons (Only if Logged In) */}
+              {isLoggedIn && (
+                <div className="absolute top-3 right-3 flex gap-3">
+                  <button
+                    onClick={() => confirmDelete(event._id)}
+                    className="text-red-600 hover:text-red-800"
+                    title="Delete Event"
+                  >
+                    <FaTrash size={20} />
+                  </button>
+                  <button
+                    onClick={() => toast.info("Edit feature coming soon!")}
+                    className="text-blue-600 hover:text-blue-800"
+                    title="Edit Event"
+                  >
+                    <FaEdit size={20} />
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   );
