@@ -25,9 +25,7 @@ const Students = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/students", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get("http://localhost:8000/api/students");
         setStudents(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch students");

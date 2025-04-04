@@ -70,12 +70,7 @@ const Volunteers = () => {
   const deleteVolunteer = async (volunteerId) => {
     try {
       await fetch(
-        `http://localhost:8000/api/admin/dashboard/volunteers/${volunteerId}`,
-        {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      );
+        `http://localhost:8000/api/admin/dashboard/volunteers/${volunteerId}`);
 
       setVolunteers((prevVolunteers) =>
         prevVolunteers.filter((volunteer) => volunteer._id !== volunteerId)

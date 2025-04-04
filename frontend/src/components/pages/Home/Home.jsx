@@ -15,7 +15,6 @@ const Home = () => {
     axios
       .get("http://localhost:8000/api/homePageImage")
       .then((response) => {
-        console.log("Fetched Images:", response.data);
         setImages(response.data);
         setLoading(false);
       })

@@ -74,10 +74,9 @@ const AdminProfile = () => {
           {/* Profile Content */}
           <div className="mt-14">
             <h2 className="text-2xl font-bold">{admin?.fullName || "N/A"}</h2>
-            <p className="text-gray-500">{admin?.email || "N/A"}</p>
             <div className="w-4/6 text-start mx-auto flex flex-col items-center p-2">
               <div className="mb-2">
-                <strong className="me-2">Role:</strong> {admin?.role || "N/A"}
+                <strong className="me-2">Email:</strong> {admin?.email || "N/A"}
               </div>
               <div className="mb-2">
                 <strong className="me-2">Contact:</strong> {admin?.contactNumber || "N/A"}
@@ -88,17 +87,42 @@ const AdminProfile = () => {
               <div className="mb-2">
                 <strong className="me-2">Unique ID:</strong> {admin?.uniqueId || "N/A"}
               </div>
+              <div className="mb-2">
+                <strong className="me-2">Role:</strong> {admin?.role || "N/A"}
+              </div>
+
+              {/* Volunteer-specific details */}
+              {admin?.role === "volunteer" && (
+                <>
+                  <div className="mb-2">
+                    <strong className="me-2">Year:</strong> {admin?.year || "N/A"}
+                  </div>
+                  <div className="mb-2">
+                    <strong className="me-2">Department:</strong> {admin?.department || "N/A"}
+                  </div>
+                  <div className="mb-2">
+                    <strong className="me-2">Residence Type:</strong> {admin?.residenceType || "N/A"}
+                  </div>
+                  {admin?.residenceType === "Hostel" && (
+                    <div className="mb-2">
+                      <strong className="me-2">Hostel Name:</strong> {admin?.hostelName || "N/A"}
+                    </div>
+                  )}
+                  {admin?.residenceType === "Hall" && (
+                    <div className="mb-2">
+                      <strong className="me-2">Hall Name:</strong> {admin?.hallName || "N/A"}
+                    </div>
+                  )}
+                  {admin?.residenceType === "Day Scholar" && (
+                    <div className="mb-2">
+                      <strong className="me-2">Address:</strong> {admin?.address || "N/A"}
+                    </div>
+                  )}
+                </>
+              )}
             </div>
 
-            {/* Edit Profile Button */}
-            <div className="mt-3 mb-4">
-              <Link
-                to="/edit-profile"
-                className="bg-gray-300 hover:bg-gray-400 text-black no-underline font-bold py-3 px-8 rounded-3xl transition duration-300"
-              >
-                Edit Profile
-              </Link>
-            </div>
+              
           </div>
         </div>
       </div>

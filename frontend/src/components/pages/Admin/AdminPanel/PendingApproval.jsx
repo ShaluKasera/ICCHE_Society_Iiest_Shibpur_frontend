@@ -46,7 +46,7 @@ const PendingApproval = () => {
     const loadingToast = toast.loading("Approving user...");
     try {
       await axios.put(
-        `https://icche.vercel.app/api/admin/dashboard/approve/${id}`,
+        `http://localhost:8000/api/admin/dashboard/approve/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -78,7 +78,7 @@ const PendingApproval = () => {
     const loadingToast = toast.loading("Rejecting user...");
     try {
       await axios.delete(
-        `https://icche.vercel.app/api/admin/dashboard/reject/${id}`,
+        `http://localhost:8000/api/admin/dashboard/reject/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

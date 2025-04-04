@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../layout/Layout";
 import axios from "axios";
+import { AiOutlineDelete,AiFillDelete } from "react-icons/ai";
+import { toast, ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Gallery = () => {
   const [galleryItems, setGalleryItems] = useState([]);
-  const [selectedMedia, setSelectedMedia] = useState(null); // State for modal
+  const [selectedMedia, setSelectedMedia] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsAdmin(!!token);
+
     const fetchGallery = async () => {
       try {
         const response = await axios.get("http://localhost:8000/api/gallery");
-        console.log("Gallery API Response:", response.data);
-
         if (response.data && response.data.success) {
           setGalleryItems(response.data.data);
         } else {
@@ -25,8 +30,56 @@ const Gallery = () => {
     fetchGallery();
   }, []);
 
+  const confirmDelete = (itemId) => {
+    const toastId = toast.warn(
+      <div>
+        <p className="font-semibold text-gray-800">
+          Are you sure you want to delete this item?
+        </p>
+        <div className="mt-2 flex gap-3 justify-center">
+          <button
+            onClick={() => {
+              toast.dismiss(toastId);
+              deleteItem(itemId);
+            }}
+            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700"
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => toast.dismiss(toastId)}
+            className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-600"
+          >
+            No
+          </button>
+        </div>
+      </div>,
+      { autoClose: false, closeOnClick: false }
+    );
+  };
+
+  const deleteItem = async (itemId) => {
+    try {
+      await axios.delete(`http://localhost:8000/api/admin/dashboard/gallery/photos/${itemId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      setGalleryItems((prevItems) =>
+        prevItems.filter((item) => item._id !== itemId)
+      );
+      toast.success("Deleted successfully!", {
+        transition: Slide,
+        autoClose: 3000,
+      });
+    } catch (error) {
+      toast.error("Failed to delete. Try again.", {
+        autoClose: 3000,
+      });
+    }
+  };
+
   return (
     <Layout>
+      <ToastContainer position="top-right" />
       <div style={{ maxWidth: "1450px", margin: "0 auto", padding: "10px" }}>
         <h2 style={{ fontSize: "3.5rem", marginBottom: "10px", textAlign: "center", color: "#333" }}>
           Gallery
@@ -44,7 +97,7 @@ const Gallery = () => {
               const thumbnail = item.photos?.[0] || item.videos?.[0];
 
               return (
-                <div key={item._id} style={{ textAlign: "center" }}>
+                <div key={item._id} style={{ position: "relative", textAlign: "center" }}>
                   {thumbnail ? (
                     thumbnail.includes(".mp4") ? (
                       <video
@@ -55,6 +108,7 @@ const Gallery = () => {
                           height: "auto",
                           borderRadius: "10px",
                           objectFit: "cover",
+                          cursor: "pointer",
                         }}
                         onClick={() => setSelectedMedia(thumbnail)}
                       />
@@ -73,6 +127,23 @@ const Gallery = () => {
                       />
                     )
                   ) : null}
+
+                  {isAdmin && (
+                    <button
+                      onClick={() => confirmDelete(item._id)}
+                      style={{
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px",
+                        background: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                        color: "red",
+                      }}
+                    >
+                      <AiFillDelete size={24} />
+                    </button>
+                  )}
 
                   <h3 style={{ fontSize: "1.2rem", marginTop: "10px", color: "#333" }}>{item.title}</h3>
                 </div>
@@ -98,7 +169,7 @@ const Gallery = () => {
               justifyContent: "center",
               zIndex: 1000,
             }}
-            onClick={() => setSelectedMedia(null)} // Close modal when clicking outside
+            onClick={() => setSelectedMedia(null)}
           >
             <div style={{ position: "relative", maxWidth: "90%", maxHeight: "90%" }}>
               <button

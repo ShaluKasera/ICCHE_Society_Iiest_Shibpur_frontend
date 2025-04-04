@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs";
-import { FaSquareInstagram, FaTwitter, FaLinkedin } from "react-icons/fa6";
+import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
 import axios from "axios";
 import { toast, ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -68,7 +69,7 @@ const Footer = () => {
 
           <div className="flex flex-col sm:flex-row mt-6">
             <div className="w-full sm:w-1/2 flex flex-col items-center sm:items-start p-4">
-              <h2 className="text-lg font-extrabold mb-2">Our Office</h2>
+              <h2 className="text-lg font-extrabold mb-2">Our Classroom</h2>
               <p className="text-gray-700">+91 465858588</p>
               <p className="text-gray-700">Slater Hall</p>
               <p className="text-gray-700">
@@ -80,22 +81,22 @@ const Footer = () => {
               <h2 className="text-lg font-semibold mb-2">Follow Us</h2>
               <ul className="flex gap-6 mt-3">
                 <li>
-                  <Link to="/facebook">
+                  <Link to="https://www.facebook.com/icchesistac" target="_blank">
                     <BsFacebook className="size-7 text-blue-900" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="http://instagram.com/icche.iiests/?hl=en">
+                  <Link to="https://www.instagram.com/icche.iiests/" target="_blank">
                     <FaSquareInstagram className="size-7 text-pink-800" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/twitter">
-                    <FaTwitter className="size-7 text-blue-700" />
+                  <Link to="https://whatsapp.com/channel/0029VaABXT57oQhYfacKWQ2b" target="_blank">
+                    <FaWhatsapp className="size-7 text-blue-700" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/linkedin">
+                  <Link to="https://www.linkedin.com/company/icche-iiest/" target="_blank">
                     <FaLinkedin className="size-7 text-blue-500" />
                   </Link>
                 </li>

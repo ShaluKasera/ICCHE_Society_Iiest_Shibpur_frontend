@@ -23,9 +23,7 @@ const Alumni = () => {
     setIsAdmin(!!token);
     const fetchAlumni = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/alumni", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const response = await axios.get("http://localhost:8000/api/alumni");
         setAlumni(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch alumni data");
