@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import Layout from "../../layout/Layout";
 import { Link, Navigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const Signup = () => {
