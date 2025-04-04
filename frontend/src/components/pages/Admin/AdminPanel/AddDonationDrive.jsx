@@ -39,12 +39,12 @@ const AddDonationDrive = () => {
     });
 
     if (coverImageURL) formDataToSend.append("coverImageURL", coverImageURL);
-    for (let i = 0; i < photos.length; i++) {
-      formDataToSend.append("photos", photos[i]);
-    }
-    for (let i = 0; i < videos.length; i++) {
-      formDataToSend.append("videos", videos[i]);
-    }
+    // for (let i = 0; i < photos.length; i++) {
+    //   formDataToSend.append("photos", photos[i]);
+    // }
+    // for (let i = 0; i < videos.length; i++) {
+    //   formDataToSend.append("videos", videos[i]);
+    // }
 
     try {
       await axios.post(
@@ -211,7 +211,7 @@ const AddDonationDrive = () => {
               type="submit"
               className="border-2 border-gray-600 py-2 link  px-5 mt-2 mb-4 rounded"
             >
-              Add Festival
+              Add Donation
             </button>
           </div>
         </form>
