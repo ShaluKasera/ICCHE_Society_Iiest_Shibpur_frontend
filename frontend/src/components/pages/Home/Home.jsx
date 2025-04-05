@@ -35,7 +35,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="relative w-full min-h-screen flex flex-col items-center justify-center text-white text-center p-6 overflow-hidden">
+      <div className="relative w-full bg-gray-450 min-h-screen flex flex-col items-center justify-center text-white text-center p-6 overflow-hidden">
         {loading ? (
           <div className="absolute inset-0 w-full h-full bg-gray-300 animate-pulse"></div>
         ) : images.length > 0 ? (
