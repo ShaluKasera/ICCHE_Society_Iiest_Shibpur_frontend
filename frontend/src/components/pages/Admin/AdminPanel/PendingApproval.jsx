@@ -18,7 +18,7 @@ const PendingApproval = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/admin/dashboard/pending-approvals",
+        "https://iccheweb.vercel.app/api/admin/dashboard/pending-approvals",
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -46,7 +46,7 @@ const PendingApproval = () => {
     const loadingToast = toast.loading("Approving user...");
     try {
       await axios.put(
-        `http://localhost:8000/api/admin/dashboard/approve/${id}`,
+        `https://iccheweb.vercel.app/api/admin/dashboard/approve/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
