@@ -57,12 +57,12 @@ const Home = () => {
           <div className="flex items-center justify-center space-x-2 text-gray-300 text-lg md:text-xl">
             <FaMapMarkerAlt className="text-red-400 size-" />
             <p className="mt-2">
-              Slatter Hall, IIEST, Shibpur, Howrah, West Bengal
+              Slater Hall, IIEST, Shibpur, Howrah, West Bengal
             </p>
           </div>
 
           {!loading && (
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mt-4">
+            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mt-4">
               A non-profit society at IIEST Shibpur dedicated to empowering
               underprivileged students.
             </p>
