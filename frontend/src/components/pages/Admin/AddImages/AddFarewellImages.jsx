@@ -41,11 +41,10 @@ const AddFarewellImages = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("title", formData.title);
     
-    // ✅ Matches Backend Field Names
     if (formData.mediaType === "photo") {
-      formDataToSend.append("photos", mediaFile); // Backend expects "photos"
+      formDataToSend.append("photos", mediaFile); 
     } else {
-      formDataToSend.append("videos", mediaFile); // Backend expects "videos"
+      formDataToSend.append("videos", mediaFile);
     }
 
     try {
