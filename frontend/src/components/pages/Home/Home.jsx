@@ -40,7 +40,7 @@ const Home = () => {
           <div className="absolute inset-0 w-full h-full bg-gray-300 animate-pulse"></div>
         ) : images.length > 0 ? (
           <div
-            className="absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-700"
+            className="absolute bg-gray-450 inset-0 w-full h-full bg-cover bg-center transition-all duration-700"
             style={{
               backgroundImage: `url(${images[currentIndex]?.coverImageURL})`,
               filter: "brightness(50%)",
