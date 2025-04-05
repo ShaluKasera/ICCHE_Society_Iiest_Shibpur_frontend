@@ -36,10 +36,10 @@ const Home = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <div className="relative w-full min-h-screen flex flex-col items-center justify-center text-white text-center p-6 overflow-hidden">
+      <div className="relative w-full  flex flex-col items-center justify-center text-white text-center p-6 overflow-hidden">
         {/* Skeleton Loader while loading */}
         {loading ? (
-          <div className="absolute inset-0 w-full h-full bg-gray-300 animate-pulse"></div>
+          <div className="absolute inset-0 w-full bg-gray-300 animate-pulse"></div>
         ) : images.length > 0 ? (
           <div
             className="absolute inset-0 w-full h-full bg-cover bg-center transition-all duration-700"
