@@ -37,7 +37,7 @@ const Classroom = () => {
         <p className="text-5xl font-extrabold">Class Timings</p>
         <div className="text-md font-bold space-x-4 mt-1">
           <span>Tuesday (5-6 PM)</span>
-          <span>Thursday (6-7 PM)</span>
+          <span>Thursday (5-6 PM)</span>
           <span>Sunday (10-11 AM)</span>
         </div>
       </div>
@@ -47,7 +47,7 @@ const Classroom = () => {
         <p className="text-center text-lg mt-4">Loading classrooms...</p>
       )}
       {error && <p className="text-center text-red-500">{error}</p>}
-      <h1 className="text-center">Last 6 Classes</h1>
+      <h1 className="text-center">Last 3 Classes</h1>
       {/* Classroom Cards */}
       {classrooms.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
