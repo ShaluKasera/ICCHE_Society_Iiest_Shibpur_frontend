@@ -94,7 +94,7 @@ const Festival = () => {
       <div className="container overflow-auto">
         <ToastContainer position="top-right" autoClose={3000} />
 
-        <h1 className=" mb-4 text-center">Festival Events</h1>
+        <h1 className=" mb-4 text-center">Festivals</h1>
 
         {loading && (
           <p className="text-lg text-gray-600">Loading festival events...</p>

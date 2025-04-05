@@ -88,7 +88,7 @@ const Farewell = () => {
     <Layout>
       <div className="container overflow-auto ">
       <ToastContainer position="top-right" autoClose={3000} />
-      <h1 className="text-2xl font-bold mb-4 text-center">Farewell Events</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Farewell Ceremonies</h1>
 
       {loading && <p className="text-center text-lg">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}

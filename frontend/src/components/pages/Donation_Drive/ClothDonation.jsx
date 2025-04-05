@@ -74,7 +74,7 @@ const ClothDonation = () => {
   return (
     <Layout>
       <ToastContainer position="top-right" autoClose={3000} />
-      <h1 className="text-2xl font-bold mb-4 text-center">Cloth Donation Events</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Cloth Donation Drive</h1>
 
       {loading && <p className="text-center text-lg">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}

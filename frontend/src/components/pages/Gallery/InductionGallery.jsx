@@ -87,8 +87,9 @@ const InductionGallery = () => {
         <h2 style={{ fontSize: "3.5rem", marginBottom: "10px", textAlign: "center", color: "#333" }}>
          Induction Gallery
         </h2>
+        <p className="text-center text-gray-400 mt-10 text-2xl">Coming soon....</p>
 
-        {galleryItems.length > 0 ? (
+        {/* {galleryItems.length > 0 ? (
           <div
             style={{
               display: "grid",
@@ -157,7 +158,7 @@ const InductionGallery = () => {
           <p style={{ fontSize: "1.2rem", color: "#666", textAlign: "center" }}>Loading gallery...</p>
         )}
 
-        {/* Modal for Fullscreen Image/Video */}
+        
         {selectedMedia && (
           <div
             style={{
@@ -199,7 +200,7 @@ const InductionGallery = () => {
               )}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </Layout>
   );
