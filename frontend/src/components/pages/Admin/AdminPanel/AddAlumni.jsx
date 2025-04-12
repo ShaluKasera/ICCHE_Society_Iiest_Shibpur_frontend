@@ -113,7 +113,6 @@ const AddAlumni = () => {
             value={formData.email}
             onChange={handleChange}
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-            required
           />
           <input
             type="text"
@@ -122,7 +121,6 @@ const AddAlumni = () => {
             value={formData.contactNumber}
             onChange={handleChange}
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-            required
           />
           <input
             type="text"
@@ -131,7 +129,6 @@ const AddAlumni = () => {
             value={formData.enrollmentNo}
             onChange={handleChange}
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-            required
           />
           <select
             name="gender"
@@ -184,7 +181,6 @@ const AddAlumni = () => {
             accept="image/*"
             onChange={handleFileChange}
             className="border p-2 rounded focus:ring-2 focus:ring-gray-400 focus:outline-none transition"
-            required
           />
           <div className="col-span-2 flex justify-center">
             <button

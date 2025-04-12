@@ -69,7 +69,7 @@ const Dashboard = () => {
 
     const toastId = toast.loading("Sending report...");
 
-    let url = ""; // Correctly define URL
+    let url =""; // Correctly define URL
     switch (reportType) {
       case "student":
         url = "https://iccheweb.vercel.app/api/admin/dashboard/students/reportexcel";
