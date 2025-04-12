@@ -63,7 +63,7 @@ const Home = () => {
 
           {!loading && (
             <p className="text-lg md:text-xl text-gray-200 max-w-3xl mt-4">
-              A non-profit society at IIEST Shibpur dedicated to empowering
+              An Outreach Programme under Department of Humanities and Social Sciences at IIEST Shibpur dedicated to empowering
               underprivileged students.
             </p>
           )}
