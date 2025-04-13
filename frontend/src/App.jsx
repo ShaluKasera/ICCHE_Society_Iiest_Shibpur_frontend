@@ -46,15 +46,13 @@ import ActivitiesGallery from './components/pages/Gallery/ActivitiesGallery';
 import AddDonationDrive from './components/pages/Admin/AdminPanel/AddDonationDrive';
 import Classroom from './components/pages/Classroom/Classroom';
 import AddClassroom from './components/pages/Admin/AdminPanel/AddClassroom';
+import ScrollToTop from '../src/ScrollToTop';
 
 function App() {
   return(
     <BrowserRouter>
-   
+   <ScrollToTop/>
     <Routes>
-      
-
-     
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/about/alumni' element={<Alumni/>}/>
