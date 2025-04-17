@@ -213,6 +213,20 @@ const Footer = () => {
           </form>
         </div>
       </div>
+
+
+      <div className="mt-6 mx-auto text-sm text-gray-600 w-fit">
+        © {new Date().getFullYear()} | All rights reserved @ ICCHE | Developed by{" "}
+        <a
+          href="/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:text-blue-700 no-underline"
+        >
+          pixBit
+        </a>
+      </div>
+
     </footer>
   );
 };

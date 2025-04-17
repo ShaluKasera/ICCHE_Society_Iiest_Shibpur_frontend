@@ -47,6 +47,7 @@ import AddDonationDrive from './components/pages/Admin/AdminPanel/AddDonationDri
 import Classroom from './components/pages/Classroom/Classroom';
 import AddClassroom from './components/pages/Admin/AdminPanel/AddClassroom';
 import ScrollToTop from '../src/ScrollToTop';
+import Picinfo from './components/pages/Admin/AdminPanel/Picinfo';
 
 function App() {
   return(
@@ -58,6 +59,7 @@ function App() {
       <Route path='/about/alumni' element={<Alumni/>}/>
       <Route path='/about/students' element={<Students/>}/>
       <Route path='/about/volunteers' element={<Volunteers/>}/>
+      <Route path='/about/picinfo' element={<Picinfo/>}/>
       <Route path='/reset-password/:resetToken' element={<ResetPassword/>}/>
       <Route path='/admin/profile' element={<AdminProfile/>}/>
       <Route path='/admin/dashboard'element={<Dashboard/>}/>
@@ -96,6 +98,7 @@ function App() {
       <Route path='/admin/dashboard/add-classroom' element={<AddClassroom/>}/>
       <Route path='/admin/dashboard/add-donation' element={<AddDonationDrive/>}/>
       <Route path='/classroom' element={<Classroom/>}/>
+
 
       <Route path='*' element={<Error/>}/>
 

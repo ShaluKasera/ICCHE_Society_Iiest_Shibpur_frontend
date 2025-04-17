@@ -208,6 +208,14 @@ const Header = () => {
                         Volunteers
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        to="/about/picinfo"
+                        className="block px-0  py-2 no-underline  text-black home-link"
+                      >
+                      PIC
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               )}
