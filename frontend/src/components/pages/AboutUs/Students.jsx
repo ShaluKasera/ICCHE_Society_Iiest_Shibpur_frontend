@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Layout from "../../layout/Layout";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -10,13 +10,11 @@ const Students = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [showDetails, setShowDetails] = useState({});
+  const [selectedStudentId, setSelectedStudentId] = useState(null);
+  const detailsRef = useRef(null);
 
   const toggleDetails = (id) => {
-    setShowDetails((prev) => ({
-      ...prev,
-      [id]: !prev[id], // Toggle current card's state
-    }));
+    setSelectedStudentId((prevId) => (prevId === id ? null : id));
   };
 
   useEffect(() => {
@@ -25,7 +23,9 @@ const Students = () => {
 
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("https://iccheweb.vercel.app/api/students");
+        const response = await axios.get(
+          "https://iccheweb.vercel.app/api/students"
+        );
         setStudents(response.data);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to fetch students");
@@ -35,6 +35,22 @@ const Students = () => {
     };
 
     fetchStudents();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        detailsRef.current &&
+        !detailsRef.current.contains(event.target)
+      ) {
+        setSelectedStudentId(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const confirmDelete = (studentId) => {
@@ -89,22 +105,20 @@ const Students = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-1 ">
+      <div className="container mx-auto px-1">
         <ToastContainer position="top-right" autoClose={3000} />
-
-        <h1 className=" items-center    text-center my-10 text-2xl font-bold ">
+        <h1 className="items-center text-center my-10 text-2xl font-bold">
           Our Students
         </h1>
 
         {loading && <p className="text-center text-lg">Loading students...</p>}
         {error && <p className="text-center text-red-500">{error}</p>}
 
-        <div className=" mx-auto grid grid-cols-1 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-xs md:text-base  ">
+        <div className="mx-auto grid grid-cols-1 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-xs md:text-base">
           {students.map((student) => (
             <div
               key={student._id}
-              className="relative bg-gradient-to-b from-gray-200 to-white p-5 shadow-lg rounded-lg flex flex-col items-center text-center cursor-pointer transition-all duration-300
-                 "
+              className="relative bg-gradient-to-b from-gray-200 to-white p-5 shadow-lg rounded-lg flex flex-col items-center text-center cursor-pointer transition-all duration-300"
             >
               {isAdmin && (
                 <button
@@ -114,6 +128,7 @@ const Students = () => {
                   <AiOutlineDelete size={24} />
                 </button>
               )}
+
               <img
                 src={student.coverImageURL || "/uploads/default.png"}
                 alt={student.fullName}
@@ -122,24 +137,27 @@ const Students = () => {
               <h5 className="font-bold text-lg">{student.fullName}</h5>
 
               {/* Toggle Details Button */}
-              {!showDetails[student._id] ? (
+              {selectedStudentId !== student._id && (
                 <button
                   onClick={() => toggleDetails(student._id)}
                   className="link border-2 py-2 px-3 rounded border-gray-700"
                 >
                   View Details
                 </button>
-              ) : null}
+              )}
 
               {/* Floating Details */}
-              {showDetails[student._id] && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 shadow-xl rounded-lg transition-all duration-300 opacity-100 z-50 overflow-hidden bg-white">
+              {selectedStudentId === student._id && (
+                <div
+                  ref={detailsRef}
+                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 shadow-xl rounded-lg transition-all duration-300 opacity-100 z-50 overflow-hidden bg-white"
+                >
                   {/* Upper Half - gray Background */}
                   <div className="bg-gray-400 h-24 flex justify-center items-center relative">
                     <img
                       src={student.coverImageURL || "/uploads/default.png"}
                       alt={student.fullName}
-                      className="w-24 h-24 rounded-full border-4 border-white absolute top-12 object-cover "
+                      className="w-24 h-24 rounded-full border-4 border-white absolute top-12 object-cover"
                     />
                   </div>
 
@@ -153,11 +171,8 @@ const Students = () => {
                         <strong>ID:</strong> {student.uniqueId}
                       </p>
                       <p>
-                        {" "}
-                        <strong>Gender:</strong>
-                        {student.gender}
+                        <strong>Gender:</strong> {student.gender}
                       </p>
-
                       <p>
                         <strong>Class:</strong> {student.studentClass}
                       </p>
@@ -166,9 +181,8 @@ const Students = () => {
                       </p>
                     </div>
 
-                    {/* Hide Details Button */}
                     <button
-                      onClick={() => toggleDetails(student._id)}
+                      onClick={() => setSelectedStudentId(null)}
                       className="mt-4 px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors duration-300"
                     >
                       Hide Details
@@ -185,5 +199,3 @@ const Students = () => {
 };
 
 export default Students;
-
-// Now, the delete button will only show if the user's role is "admin"! 🎯
