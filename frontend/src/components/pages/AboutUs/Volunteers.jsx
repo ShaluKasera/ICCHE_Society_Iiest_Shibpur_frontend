@@ -9,10 +9,13 @@ const Volunteers = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [activeCardId, setActiveCardId] = useState(null);
+  const [showDetails, setShowDetails] = useState({});
 
   const toggleDetails = (id) => {
-    setActiveCardId((prevId) => (prevId === id ? null : id));
+    setShowDetails((prev) => ({
+      ...prev,
+      [id]: !prev[id], // Toggle current card's state
+    }));
   };
 
   useEffect(() => {
@@ -34,17 +37,6 @@ const Volunteers = () => {
     };
 
     fetchVolunteers();
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!event.target.closest(".volunteer-card")) {
-        setActiveCardId(null);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   const confirmDelete = (volunteerId) => {
@@ -78,8 +70,7 @@ const Volunteers = () => {
   const deleteVolunteer = async (volunteerId) => {
     try {
       await fetch(
-        `https://iccheweb.vercel.app/api/admin/dashboard/volunteers/${volunteerId}`
-      );
+        `https://iccheweb.vercel.app/api/admin/dashboard/volunteers/${volunteerId}`);
 
       setVolunteers((prevVolunteers) =>
         prevVolunteers.filter((volunteer) => volunteer._id !== volunteerId)
@@ -97,10 +88,10 @@ const Volunteers = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-1">
+      <div className="container mx-auto px-1 ">
         <ToastContainer position="top-right" autoClose={3000} />
 
-        <h1 className="text-center my-10 text-2xl font-bold">
+        <h1 className=" items-center    text-center my-10 text-2xl font-bold ">
           Our Volunteers
         </h1>
 
@@ -109,11 +100,12 @@ const Volunteers = () => {
         )}
         {error && <p className="text-center text-red-500">{error}</p>}
 
-        <div className="px-4 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-xs md:text-base">
+        <div className="px-4 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-xs md:text-base  ">
           {volunteers.map((volunteer) => (
             <div
               key={volunteer._id}
-              className="volunteer-card relative w-64 bg-gradient-to-b from-gray-200 to-white p-5 shadow-lg rounded-lg flex flex-col items-center text-center cursor-pointer transition-all duration-300"
+              className="relative w-64 bg-gradient-to-b from-gray-200 to-white p-5 shadow-lg rounded-lg flex flex-col items-center text-center cursor-pointer transition-all duration-300
+                 "
             >
               {isAdmin && (
                 <button
@@ -121,65 +113,90 @@ const Volunteers = () => {
                     e.stopPropagation();
                     confirmDelete(volunteer._id);
                   }}
-                  className="absolute top-2 right-2 text-red-500 hover:text-red-700 p-2 rounded-full"
+                  className="absolute top-2 right-2 text-red-500 hover:text-red-700 p-2 rounded-full "
                 >
                   <AiOutlineDelete size={24} />
                 </button>
               )}
-
               <img
                 src={volunteer.coverImageURL || "/uploads/default.png"}
                 alt={volunteer.fullName}
-                className="w-24 h-24 rounded-full object-cover mb-3"
+                className="w-24 h-24 rounded-full object-cover mb-3 "
               />
               <h5 className="font-bold text-lg">{volunteer.fullName}</h5>
 
               {/* Toggle Details Button */}
-              {activeCardId !== volunteer._id && (
+              {!showDetails[volunteer._id] ? (
                 <button
                   onClick={() => toggleDetails(volunteer._id)}
                   className="link border-2 py-2 px-3 rounded border-gray-700"
                 >
                   View Details
                 </button>
-              )}
+              ) : null}
 
               {/* Floating Details */}
-              {activeCardId === volunteer._id && (
+              {showDetails[volunteer._id] && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 shadow-xl rounded-lg transition-all duration-300 opacity-100 z-50 overflow-hidden bg-white">
-                  {/* Upper Half */}
+                  {/* Upper Half - gray Background */}
                   <div className="bg-gray-400 h-24 flex justify-center items-center relative">
                     <img
                       src={volunteer.coverImageURL || "/uploads/default.png"}
                       alt={volunteer.fullName}
-                      className="w-24 h-24 rounded-full border-4 border-white absolute top-12 object-cover"
+                      className="w-24 h-24 rounded-full border-4 border-white absolute top-12 object-cover "
                     />
                   </div>
 
-                  {/* Lower Half */}
+                  {/* Lower Half - White Background */}
                   <div className="pt-12 pb-4 px-4 text-center bg-white">
                     <h3 className="text-gray-700 text-lg font-bold">
                       {volunteer.fullName}
                     </h3>
                     <div className="text-start mt-2 text-gray-600 text-sm">
-                      <p><strong>Email:</strong> {volunteer.email}</p>
-                      <p><strong>Contact:</strong> {volunteer.contactNumber}</p>
-                      <p><strong>Enrollment No:</strong> {volunteer.enrollmentNo}</p>
-                      <p><strong>Gender:</strong> {volunteer.gender}</p>
-                      <p><strong>Year: </strong> {volunteer.year}</p>
-                      <p><strong>Department:</strong> {volunteer.department}</p>
-                      <p><strong>Residence:</strong> {volunteer.residenceType}</p>
+                      <p className="break-words overflow-auto whitespace-normal">
+                        <strong>Email:</strong> {volunteer.email}
+                      </p>
+                      <p className="break-words overflow-auto whitespace-normal">
+                        {" "}
+                        <strong>Contact:</strong>
+                        {volunteer.contactNumber}
+                      </p>
+                      <p>
+                        <strong>Enrollment No:</strong> {volunteer.enrollmentNo}
+                      </p>
+                      <p className="break-words overflow-auto whitespace-normal">
+                        {" "}
+                        <strong>Gender:</strong>
+                        {volunteer.gender}
+                      </p>
+                      <p className="break-words overflow-auto whitespace-normal">
+                        <strong>Year: </strong>
+                        {volunteer.year}
+                      </p>
+                      <p className="break-words overflow-auto whitespace-normal">
+                        <strong>Department:</strong> {volunteer.department}
+                      </p>
+                      <p className="break-words overflow-auto whitespace-normal">
+                        <strong>Residence:</strong> {volunteer.residenceType}
+                      </p>
                       {volunteer.residenceType === "Hostel" && (
-                        <p><strong>Hostel: </strong> {volunteer.hostelName}</p>
+                        <p className="break-words overflow-auto whitespace-normal">
+                          <strong>Hostel: </strong> {volunteer.hostelName}
+                        </p>
                       )}
                       {volunteer.residenceType === "Hall" && (
-                        <p><strong>Hall: </strong> {volunteer.hallName}</p>
+                        <p className="break-words overflow-auto whitespace-normal">
+                          <strong>Hall: </strong> {volunteer.hallName}
+                        </p>
                       )}
                       {volunteer.residenceType === "Day Scholar" && (
-                        <p><strong>Address: </strong> {volunteer.address}</p>
+                        <p className="break-words overflow-auto whitespace-normal">
+                          <strong>Address: </strong> {volunteer.address}
+                        </p>
                       )}
                     </div>
 
+                    {/* Hide Details Button */}
                     <button
                       onClick={() => toggleDetails(volunteer._id)}
                       className="mt-4 px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors duration-300"
