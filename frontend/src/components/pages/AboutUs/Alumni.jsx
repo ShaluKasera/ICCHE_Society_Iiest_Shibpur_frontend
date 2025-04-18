@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Layout from "../../layout/Layout";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -10,14 +10,13 @@ const Alumni = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [showDetails, setShowDetails] = useState({});
+  const [showDetails, setShowDetails] = useState(null);
+  const detailsRef = useRef(null);
 
   const toggleDetails = (id) => {
-    setShowDetails((prev) => ({
-      ...prev,
-      [id]: !prev[id], // Toggle current card's state
-    }));
+    setShowDetails((prevId) => (prevId === id ? null : id));
   };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsAdmin(!!token);
@@ -33,6 +32,22 @@ const Alumni = () => {
     };
 
     fetchAlumni();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        detailsRef.current &&
+        !detailsRef.current.contains(event.target)
+      ) {
+        setShowDetails(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const confirmDelete = (alumId) => {
@@ -74,12 +89,12 @@ const Alumni = () => {
       setAlumni((prevAlumni) =>
         prevAlumni.filter((alum) => alum._id !== alumId)
       );
-      toast.success(" Alumnus deleted successfully!", {
+      toast.success("Alumnus deleted successfully!", {
         transition: Slide,
         autoClose: 3000,
       });
     } catch (error) {
-      toast.error(" Failed to delete alumnus. Please try again.", {
+      toast.error("Failed to delete alumnus. Please try again.", {
         autoClose: 3000,
       });
     }
@@ -90,7 +105,7 @@ const Alumni = () => {
       <div className="container mx-auto px-1 ">
         <ToastContainer position="top-right" autoClose={3000} />
 
-        <h1 className=" items-center    text-center my-10 text-2xl font-bold ">
+        <h1 className="items-center text-center my-10 text-2xl font-bold">
           Our Alumni
         </h1>
 
@@ -99,7 +114,7 @@ const Alumni = () => {
         )}
         {error && <p className="text-center text-red-500">{error}</p>}
 
-        <div className="px-4 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-xs md:text-base  ">
+        <div className="px-4 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-xs md:text-base">
           {alumni.map((alum) => (
             <div
               key={alum._id}
@@ -121,8 +136,7 @@ const Alumni = () => {
               />
               <h5 className="font-bold text-lg">{alum.fullName}</h5>
 
-              {/* Toggle Details Button */}
-              {!showDetails[alum._id] ? (
+              {!showDetails || showDetails !== alum._id ? (
                 <button
                   onClick={() => toggleDetails(alum._id)}
                   className="link border-2 py-2 px-3 rounded border-gray-700"
@@ -131,53 +145,49 @@ const Alumni = () => {
                 </button>
               ) : null}
 
-              {/* Floating Details */}
-              {showDetails[alum._id] && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 shadow-xl rounded-lg transition-all duration-300 opacity-100 z-50 overflow-hidden bg-white">
-                  {/* Upper Half - gray Background */}
+              {showDetails === alum._id && (
+                <div
+                  ref={detailsRef}
+                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 shadow-xl rounded-lg transition-all duration-300 opacity-100 z-50 overflow-hidden bg-white"
+                >
                   <div className="bg-gray-400 h-24 flex justify-center items-center relative">
                     <img
                       src={alum.coverImageURL || "/uploads/default.png"}
                       alt={alum.fullName}
-                      className="w-24 h-24 rounded-full border-4 border-white absolute top-12 object-cover "
+                      className="w-24 h-24 rounded-full border-4 border-white absolute top-12 object-cover"
                     />
                   </div>
 
-                  {/* Lower Half - White Background */}
                   <div className="pt-12 pb-4 px-4 text-center bg-white">
                     <h3 className="text-gray-700 text-lg font-bold">
                       {alum.fullName}
                     </h3>
                     <div className="text-start mt-2 text-gray-600 text-sm">
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Email:</strong> {alum.email}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Contact:</strong> {alum.contactNumber}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Enrollment ID:</strong> {alum.enrollmentNo}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal">
-                        <strong>Gender:</strong>
-                        {alum.gender}
+                      <p>
+                        <strong>Gender:</strong> {alum.gender}
                       </p>
-
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Department:</strong> {alum.department}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Graduation Year:</strong> {alum.graduationYear}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Company:</strong> {alum.company || "N/A"}
                       </p>
-                      <p className="break-words overflow-auto whitespace-normal">
+                      <p>
                         <strong>Address:</strong> {alum.address || "N/A"}
                       </p>
                     </div>
-
-                    {/* Hide Details Button */}
                     <button
                       onClick={() => toggleDetails(alum._id)}
                       className="mt-4 px-3 py-2 rounded bg-gray-500 text-white hover:bg-gray-800 transition-colors duration-300"
