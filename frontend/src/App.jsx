@@ -98,15 +98,9 @@ function App() {
       <Route path='/admin/dashboard/add-classroom' element={<AddClassroom/>}/>
       <Route path='/admin/dashboard/add-donation' element={<AddDonationDrive/>}/>
       <Route path='/classroom' element={<Classroom/>}/>
-
-
       <Route path='*' element={<Error/>}/>
-
-      
     </Routes>
-   
     </BrowserRouter>
   )
 }
-
 export default App

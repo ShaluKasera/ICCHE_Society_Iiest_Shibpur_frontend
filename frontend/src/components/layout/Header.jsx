@@ -213,7 +213,7 @@ const Header = () => {
                         to="/about/picinfo"
                         className="block px-0  py-2 no-underline  text-black home-link"
                       >
-                      PIC
+                      FIC
                       </Link>
                     </li>
                   </ul>

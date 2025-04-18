@@ -8,7 +8,7 @@ const Picinfo = () => {
       <div className="w-[800px] h-[500px] bg-gray-800 shadow-2xl rounded-2xl overflow-hidden mx-auto flex flex-col">
         {/* Title */}
         <div className="bg-gray-900 text-white text-center py-3 px-6 text-xl font-semibold">
-          Professor In-Charge (ICCHE)
+          Faculty In-Charge (ICCHE)
         </div>
 
         <div className="flex flex-grow">
