@@ -25,7 +25,7 @@ const About = () => {
                 of studies in science,technology and culture started by students
                 of IIEST Shibpur in 2016 as an evening school under the
                 Department ofHumanities and Social Sciences. Since, 2016 it is
-                providing supportive environment forunderprivileged children
+                providing supportive environment for underprivileged children
               </p>
             </div>
           </div>
